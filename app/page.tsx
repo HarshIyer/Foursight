@@ -1,3 +1,5 @@
+"use client";
+import { useEffect } from "react";
 import Navbar from "./components/navbar/Navbar";
 import TopGainers from "./components/sections/TopMovers/TopGainers";
 import TopLosers from "./components/sections/TopMovers/TopLosers";
@@ -5,6 +7,14 @@ import TopVolume from "./components/sections/TopMovers/TopVolume";
 import Watchlist from "./components/sections/Watchlist";
 
 export default function Home() {
+  function hydrate() {}
+
+  useEffect(() => {
+    hydrate();
+  }, []);
+
+  setInterval(hydrate, 10000);
+
   return (
     <div className="flex flex-col">
       <Navbar />

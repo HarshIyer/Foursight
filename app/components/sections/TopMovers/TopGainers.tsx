@@ -36,9 +36,9 @@ export default function TopGainers(props: { type: string }) {
           marketCap="21.65T"
         />
         <Scrip
-          title="Reliance Industries"
+          title="IRFC"
           ltp={2500}
-          symbol="RELIANCE"
+          symbol="IRFC"
           change={5}
           changePercent={0.5}
           opening={2400}

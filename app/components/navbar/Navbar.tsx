@@ -9,6 +9,7 @@ export default function Navbar() {
         <NavbarItem title="Find Stocks" link="/search" active={false} />
       </div>
       <div className="flex flex-row">
+        <NavbarItem title="Top Movers" link="/topmovers" active={false} />
         <NavbarItem title="Account" link="/account" active={false} />
       </div>
     </div>
