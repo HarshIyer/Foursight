@@ -1,10 +1,6 @@
 "use client";
 import { useEffect } from "react";
 import Navbar from "./components/navbar/Navbar";
-import TopGainers from "./components/sections/TopMovers/TopGainers";
-import TopLosers from "./components/sections/TopMovers/TopLosers";
-import TopVolume from "./components/sections/TopMovers/TopVolume";
-import Watchlist from "./components/sections/Watchlist";
 import TopMovers from "./components/sections/TopMovers/TopMovers";
 
 export default function Home() {
