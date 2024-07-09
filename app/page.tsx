@@ -25,7 +25,7 @@ export default function Home() {
         </h1>
       </div>
       <div>
-        <Watchlist />
+        {/* <Watchlist /> */}
         <TopMovers />
       </div>
     </div>

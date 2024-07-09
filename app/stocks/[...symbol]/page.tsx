@@ -85,8 +85,8 @@ export default function Page({
             {stockData.dayChangePerc.toFixed(2)}%)
           </p>
         </div>
-        <div>
-          <HighChart />
+        <div className="w-[70%]">
+          <HighChart symbol={params.symbol} />
         </div>
         <div>
           <ScripTable
