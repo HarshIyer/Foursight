@@ -6,6 +6,7 @@ import { apiURL } from "@/app/components/apiURL";
 import { symbols } from "@/app/components/symbols";
 import ScripTable from "./components/ScripTable";
 import HighChart from "./components/HighChart";
+export const runtime = "edge";
 export default function Page({
   params,
 }: {
