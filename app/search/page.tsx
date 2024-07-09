@@ -1,10 +1,11 @@
 "use client";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Navbar from "../components/navbar/Navbar";
 import TopGainers from "../components/sections/TopMovers/TopGainers";
 import TopLosers from "../components/sections/TopMovers/TopLosers";
 import TopVolume from "../components/sections/TopMovers/TopVolume";
 import { IoIosSearch } from "react-icons/io";
+import TopMovers from "../components/sections/TopMovers/TopMovers";
 export default function SearchPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [query, setQuery] = useState("");
@@ -41,9 +42,7 @@ export default function SearchPage() {
           </h1>
         </div>
         <div className="mt-24">
-          <TopGainers type="Gainers" />
-          <TopLosers type="Losers" />
-          <TopVolume type="Volume" />
+          <TopMovers />
         </div>
       </div>
     </div>

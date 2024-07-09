@@ -5,6 +5,7 @@ import TopGainers from "./components/sections/TopMovers/TopGainers";
 import TopLosers from "./components/sections/TopMovers/TopLosers";
 import TopVolume from "./components/sections/TopMovers/TopVolume";
 import Watchlist from "./components/sections/Watchlist";
+import TopMovers from "./components/sections/TopMovers/TopMovers";
 
 export default function Home() {
   function hydrate() {}
@@ -25,9 +26,7 @@ export default function Home() {
       </div>
       <div>
         <Watchlist />
-        <TopGainers type="Gainers" />
-        <TopLosers type="Losers" />
-        <TopVolume type="Volume" />
+        <TopMovers />
       </div>
     </div>
   );

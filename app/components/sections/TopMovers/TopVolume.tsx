@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Scrip from "../../Scrip";
 
-export default function TopVolume(props: { type: string }) {
+export default function TopVolume(props: { type: string; apiData: any }) {
+  let topVolume = props.apiData;
+
   return (
     <div className="mx-4 mb-12 my-4">
       <Link href="/topmovers">
@@ -22,71 +24,22 @@ export default function TopVolume(props: { type: string }) {
         </h1>
       </Link>
       <div className="flex flex-row overflow-x-scroll mt-4">
-        <Scrip
-          title="Reliance Industries"
-          ltp={2500}
-          symbol="RELIANCE"
-          change={5}
-          changePercent={0.5}
-          opening={2400}
-          closing={2450}
-          avg7dVolume="7.15M"
-          yearlyHigh={2600}
-          yearlyLow={2300}
-          marketCap="21.65T"
-        />
-        <Scrip
-          title="Reliance Industries"
-          ltp={2500}
-          symbol="RELIANCE"
-          change={5}
-          changePercent={0.5}
-          opening={2400}
-          closing={2450}
-          avg7dVolume="7.15M"
-          yearlyHigh={2600}
-          yearlyLow={2300}
-          marketCap="21.65T"
-        />
-        <Scrip
-          title="Reliance Industries"
-          ltp={2500}
-          symbol="RELIANCE"
-          change={5}
-          changePercent={0.5}
-          opening={2400}
-          closing={2450}
-          avg7dVolume="7.15M"
-          yearlyHigh={2600}
-          yearlyLow={2300}
-          marketCap="21.65T"
-        />
-        <Scrip
-          title="Reliance Industries"
-          ltp={2500}
-          symbol="RELIANCE"
-          change={5}
-          changePercent={0.5}
-          opening={2400}
-          closing={2450}
-          avg7dVolume="7.15M"
-          yearlyHigh={2600}
-          yearlyLow={2300}
-          marketCap="21.65T"
-        />
-        <Scrip
-          title="Reliance Industries"
-          ltp={2500}
-          symbol="RELIANCE"
-          change={5}
-          changePercent={0.5}
-          opening={2400}
-          closing={2450}
-          avg7dVolume="7.15M"
-          yearlyHigh={2600}
-          yearlyLow={2300}
-          marketCap="21.65T"
-        />
+        {topVolume?.map((scrip: any, index: number) => (
+          <Scrip
+            key={index}
+            title={scrip.company.companyName}
+            ltp={scrip.stats.ltp}
+            symbol={scrip.company.nseScriptCode}
+            change={scrip.stats.dayChange.toFixed(2)}
+            changePercent={scrip.stats.dayChangePerc.toFixed(2)}
+            opening={scrip.stats.high}
+            closing={scrip.stats.close}
+            equityType={scrip.company.equityType}
+            yearlyHigh={scrip.stats.yearHighPrice}
+            yearlyLow={scrip.stats.yearLowPrice}
+            marketCap={scrip.company.marketCap}
+          />
+        ))}
       </div>
     </div>
   );
