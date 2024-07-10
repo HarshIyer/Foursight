@@ -16,7 +16,7 @@ export default function Page({
     symbol: string;
   };
 }) {
-  const symbol = decodeURIComponent(params.symbol[0]);
+  const symbol = params.symbol[0];
   const [stockData, setStockData] = useState({
     type: "stock",
     symbol: symbol,
@@ -58,7 +58,7 @@ export default function Page({
       let data;
       try {
         data = await axios.post(`${apiURL}/getStockQuote`, {
-          symbol: symbol,
+          symbol: decodeURIComponent(symbol),
         });
       } catch (err) {
         console.error(err);
@@ -86,7 +86,7 @@ export default function Page({
   function getCompanyName(symbol: string) {
     let companyName = "";
     symbols.forEach((scrip) => {
-      if (scrip.Scrip === symbol) {
+      if (scrip.Scrip === decodeURIComponent(params.symbol[0])) {
         companyName = scrip["Company Name"];
       }
     });
