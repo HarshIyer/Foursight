@@ -6,6 +6,7 @@ import { apiURL } from "@/app/components/apiURL";
 import { symbols } from "@/app/components/symbols";
 import ScripTable from "./components/ScripTable";
 import HighChart from "./components/HighChart";
+import ScripTableMobile from "./components/ScripTableMobile";
 export const runtime = "edge";
 export default function Page({
   params,
@@ -69,16 +70,16 @@ export default function Page({
     <div>
       <Navbar />
       <div className="mx-6 my-6">
-        <h1 className="font-bold text-3xl "> {companyName}</h1>
+        <h1 className="font-bold text-2xl md:text-3xl "> {companyName}</h1>
         <div className="flex flex-row items-center">
-          <p className="text-black text-xl font-medium mr-3">
+          <p className="text-black text-lg md:text-xl font-medium mr-3">
             ₹ {JSON.stringify(stockData.ltp)}
           </p>
           <p
             className={
               stockData.dayChange >= 0
-                ? `green-text text-lg font-semibold flex mt-auto items-end justify-end h-full`
-                : `red-text text-lg font-semibold flex mt-auto items-end justify-end h-full`
+                ? `green-text text-md md:text-lg font-semibold flex mt-auto items-end justify-end h-full`
+                : `red-text text-md md:text-lg font-semibold flex mt-auto items-end justify-end h-full`
             }
           >
             {stockData.dayChange.toFixed(2)} (
@@ -86,29 +87,52 @@ export default function Page({
             {stockData.dayChangePerc.toFixed(2)}%)
           </p>
         </div>
-        <div className="w-[70%]">
+        <div className="md:w-[70%]">
           <HighChart symbol={params.symbol} />
         </div>
         <div>
-          <ScripTable
-            open={stockData.open}
-            close={stockData.close}
-            ltp={stockData.ltp}
-            high={stockData.high}
-            low={stockData.low}
-            volume={stockData.volume}
-            tsInMillis={stockData.tsInMillis}
-            lowPriceRange={stockData.lowPriceRange}
-            highPriceRange={stockData.highPriceRange}
-            totalBuyQty={stockData.totalBuyQty}
-            totalSellQty={stockData.totalSellQty}
-            lastTradeQty={stockData.lastTradeQty}
-            lastTradeTime={stockData.lastTradeTime}
-            oiDayChange={stockData.oiDayChange}
-            oiDayChangePerc={stockData.oiDayChangePerc}
-            lowTradeRange={stockData.lowTradeRange}
-            highTradeRange={stockData.highTradeRange}
-          />
+          <div className={`hidden md:block`}>
+            <ScripTable
+              open={stockData.open}
+              close={stockData.close}
+              ltp={stockData.ltp}
+              high={stockData.high}
+              low={stockData.low}
+              volume={stockData.volume}
+              tsInMillis={stockData.tsInMillis}
+              lowPriceRange={stockData.lowPriceRange}
+              highPriceRange={stockData.highPriceRange}
+              totalBuyQty={stockData.totalBuyQty}
+              totalSellQty={stockData.totalSellQty}
+              lastTradeQty={stockData.lastTradeQty}
+              lastTradeTime={stockData.lastTradeTime}
+              oiDayChange={stockData.oiDayChange}
+              oiDayChangePerc={stockData.oiDayChangePerc}
+              lowTradeRange={stockData.lowTradeRange}
+              highTradeRange={stockData.highTradeRange}
+            />
+          </div>
+          <div className={`block md:hidden`}>
+            <ScripTableMobile
+              open={stockData.open}
+              close={stockData.close}
+              ltp={stockData.ltp}
+              high={stockData.high}
+              low={stockData.low}
+              volume={stockData.volume}
+              tsInMillis={stockData.tsInMillis}
+              lowPriceRange={stockData.lowPriceRange}
+              highPriceRange={stockData.highPriceRange}
+              totalBuyQty={stockData.totalBuyQty}
+              totalSellQty={stockData.totalSellQty}
+              lastTradeQty={stockData.lastTradeQty}
+              lastTradeTime={stockData.lastTradeTime}
+              oiDayChange={stockData.oiDayChange}
+              oiDayChangePerc={stockData.oiDayChangePerc}
+              lowTradeRange={stockData.lowTradeRange}
+              highTradeRange={stockData.highTradeRange}
+            />
+          </div>
         </div>
       </div>
     </div>

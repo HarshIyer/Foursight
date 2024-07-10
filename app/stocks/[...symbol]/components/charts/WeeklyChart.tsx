@@ -34,7 +34,7 @@ export default function WeeklyChart(props: any) {
 
     series: [
       {
-        name: "This week's Price Movement",
+        name: "Price",
         color: "#037a68",
         type: "line",
         data: dataFormatted,

@@ -20,7 +20,7 @@ export default function Scrip(props: {
         <div className="text-4xl font-extrabold text-black">Loading...</div>
       }
     >
-      <div className="min-w-[500px] mr-4 my-2 flex flex-col border border-2 p-4 rounded-lg border-[#858585]]">
+      <div className="min-w-[450px] md:min-w-[500px] mr-4 my-2 flex flex-col border border-2 p-4 rounded-lg border-[#858585]]">
         <Link href={`/stocks/${props.symbol}`}>
           <h1
             className={

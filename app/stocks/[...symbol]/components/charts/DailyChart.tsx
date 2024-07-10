@@ -1,7 +1,7 @@
 import * as Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import HighchartsExporting from "highcharts/modules/exporting";
-import { useRef } from "react";
+import { Suspense, useRef } from "react";
 const timestamp = require("unix-timestamp");
 
 export default function DailyChart(props: any) {

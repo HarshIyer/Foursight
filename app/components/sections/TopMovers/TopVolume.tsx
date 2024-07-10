@@ -7,7 +7,7 @@ export default function TopVolume(props: { type: string; apiData: any }) {
   return (
     <div className="mx-4 mb-12 my-4">
       <Link href="/topmovers">
-        <h1 className="text-3xl font-bold">
+        <h1 className="text-2xl md:text-3xl font-bold">
           Top{" "}
           <span
             className={

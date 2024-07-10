@@ -1,4 +1,4 @@
-import { use, useEffect, useState, useRef } from "react";
+import { use, useEffect, useState, useRef, Suspense } from "react";
 import DailyChart from "./charts/DailyChart";
 import axios from "axios";
 import { apiURL } from "@/app/components/apiURL";

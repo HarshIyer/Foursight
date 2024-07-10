@@ -1,16 +1,15 @@
 import NavbarItem from "./NavbarItem";
+import NavbarMobile from "./NavbarMobile";
+import NavbarPC from "./NavbarPC";
 
 export default function Navbar() {
   return (
-    <div className="flex flex-row justify-between bg-[#BCBCBC] my-2 mx-2 rounded-xl px-2 py-1">
-      <div className="flex flex-row">
-        <NavbarItem title="Home" link="/" active={false} />
-        <NavbarItem title="Watchlist" link="/watchlist" active={false} />
-        <NavbarItem title="Find Stocks" link="/search" active={false} />
+    <div>
+      <div className="block md:hidden">
+        <NavbarMobile />
       </div>
-      <div className="flex flex-row">
-        <NavbarItem title="Top Movers" link="/topmovers" active={false} />
-        <NavbarItem title="Account" link="/account" active={false} />
+      <div className="hidden md:block">
+        <NavbarPC />
       </div>
     </div>
   );

@@ -14,7 +14,12 @@ export default function Scrip(props: {
   return (
     <tr className="text-2xl border border-1 border-[#858585] rounded-xl">
       <td className="px-2 py-6">
-        <Link href={`/stocks/${props.symbol}`}>{props.title} </Link>
+        <Link
+          href={`/stocks/${props.symbol}`}
+          className="truncate flex flex-row line-clamp-1"
+        >
+          {props.title}{" "}
+        </Link>
       </td>
       <td
         className={

@@ -31,9 +31,8 @@ export default function YearlyChart(props: any) {
 
     series: [
       {
-        name: "This year's Price Movement",
+        name: "Price",
         color: "#037a68",
-
         type: "line",
         data: dataFormatted,
       },

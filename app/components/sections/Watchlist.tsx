@@ -7,7 +7,7 @@ export default function Watchlist() {
       <h1 className="text-3xl font-bold">
         <Link href="/watchlist">Your Watchlist </Link>
       </h1>
-      <div className="flex flex-row overflow-x-scroll mt-4">
+      <div className="flex flex-col md:flex-row overflow-x-scroll mt-4">
         <Scrip
           title="Reliance Industries"
           ltp={2500}

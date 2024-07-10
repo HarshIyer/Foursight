@@ -21,7 +21,7 @@ export default function MonthlyChart(props: any) {
       enabled: false,
     },
     title: {
-      text: "This year's Price Movement",
+      text: "This month's Price Movement",
     },
     chart: {
       plotBackgroundColor: "",
@@ -32,8 +32,8 @@ export default function MonthlyChart(props: any) {
 
     series: [
       {
-        name: "This year's Price Movement",
         color: "#037a68",
+        name: "Price",
 
         type: "line",
         data: dataFormatted,

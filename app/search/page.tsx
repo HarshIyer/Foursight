@@ -21,16 +21,16 @@ export default function SearchPage() {
     <div>
       <Navbar />
       <div>
-        <div className="w-full mx-12 my-4 flex justify-center flex-row">
+        <div className="w-full md:mx-12 my-4 flex justify-center flex-row">
           <form onSubmit={search} className="flex flex-row">
             <input
               type="text"
-              className="w-fit p-4 mx-6 border border-1 border-[#858585] rounded-xl text-xl font-semibold transition transition-all-0.5s hover:border-[#037A68] focus:border-[#037A68]"
+              className="w-fit p-4 mx-2 md:mx-6 border border-1 border-[#858585] rounded-xl text-xl font-semibold transition transition-all-0.5s hover:border-[#037A68] focus:border-[#037A68]"
               value={query}
               onChange={updateQuery}
               placeholder="Search for stocks"
             />
-            <button className="flex justify-center items-center">
+            <button className="mr-2 flex justify-center items-center">
               <IoIosSearch size={32} />
             </button>
           </form>
