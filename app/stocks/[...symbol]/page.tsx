@@ -58,7 +58,7 @@ export default function Page({
       let data;
       try {
         data = await axios.post(`${apiURL}/getStockQuote`, {
-          symbol: decodeURIComponent(symbol),
+          symbol: btoa(decodeURIComponent(symbol)),
         });
       } catch (err) {
         console.error(err);

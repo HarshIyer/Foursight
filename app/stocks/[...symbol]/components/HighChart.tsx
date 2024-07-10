@@ -19,7 +19,7 @@ export default function HighChart(props: any) {
       let data;
       try {
         data = await axios.post(`${apiURL}/getCandles`, {
-          symbol: symbol,
+          symbol: btoa(symbol),
         });
       } catch (err) {
         console.error(err);
