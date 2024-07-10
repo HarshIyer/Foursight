@@ -15,8 +15,8 @@ export default function ScripTableMobile(props: any) {
     lastTradeTime,
   } = props;
   return (
-    <div className="flex  items-center">
-      <table className="border-separate border-spacing-4">
+    <div className="flex mt-4 justify-center items-center">
+      <table className="border-separate border-spacing-2">
         <tbody>
           <tr>
             <td className="table-title font-semibold pr-12">

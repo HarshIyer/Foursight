@@ -7,6 +7,7 @@ import { symbols } from "@/app/components/symbols";
 import ScripTable from "./components/ScripTable";
 import HighChart from "./components/HighChart";
 import ScripTableMobile from "./components/ScripTableMobile";
+import TopMoversColumn from "./components/TopMoversColumn";
 export const runtime = "edge";
 export default function Page({
   params,
@@ -15,7 +16,7 @@ export default function Page({
     symbol: string;
   };
 }) {
-  const symbol = params.symbol[0];
+  const symbol = decodeURIComponent(params.symbol[0]);
   const [stockData, setStockData] = useState({
     type: "stock",
     symbol: symbol,
@@ -41,6 +42,17 @@ export default function Page({
     lowTradeRange: null,
     highTradeRange: null,
   });
+  const [topMovers, setTopMovers] = useState({
+    TOP_GAINERS: {
+      items: [],
+    },
+    TOP_LOSERS: {
+      items: [],
+    },
+    TOP_VOLUME: {
+      items: [],
+    },
+  });
   useEffect(() => {
     async function getStockData() {
       let data;
@@ -54,6 +66,21 @@ export default function Page({
       setStockData(data?.data.stockQuote);
       return data?.data.stockQuote;
     }
+    async function getTopMoverData() {
+      let data;
+      try {
+        data = await axios.post(`${apiURL}/topmovers`, {
+          size: 10,
+        });
+      } catch (err) {
+        console.error(err);
+      }
+      setTopMovers(data?.data);
+      console.log(data?.data);
+      return data?.data;
+    }
+    getTopMoverData();
+
     getStockData();
   }, [symbol]);
   function getCompanyName(symbol: string) {
@@ -87,51 +114,60 @@ export default function Page({
             {stockData.dayChangePerc.toFixed(2)}%)
           </p>
         </div>
-        <div className="md:w-[70%]">
-          <HighChart symbol={params.symbol} />
-        </div>
-        <div>
-          <div className={`hidden md:block`}>
-            <ScripTable
-              open={stockData.open}
-              close={stockData.close}
-              ltp={stockData.ltp}
-              high={stockData.high}
-              low={stockData.low}
-              volume={stockData.volume}
-              tsInMillis={stockData.tsInMillis}
-              lowPriceRange={stockData.lowPriceRange}
-              highPriceRange={stockData.highPriceRange}
-              totalBuyQty={stockData.totalBuyQty}
-              totalSellQty={stockData.totalSellQty}
-              lastTradeQty={stockData.lastTradeQty}
-              lastTradeTime={stockData.lastTradeTime}
-              oiDayChange={stockData.oiDayChange}
-              oiDayChangePerc={stockData.oiDayChangePerc}
-              lowTradeRange={stockData.lowTradeRange}
-              highTradeRange={stockData.highTradeRange}
-            />
+        <div className="flex justify-between mr-4 flex-col lg:flex-row ">
+          <div className="md:w-[60%] ">
+            <div className="w-full ">
+              <HighChart symbol={params.symbol} />
+            </div>
+            <div className="mt-4">
+              <div className={`hidden md:block`}>
+                <ScripTable
+                  open={stockData.open}
+                  close={stockData.close}
+                  ltp={stockData.ltp}
+                  high={stockData.high}
+                  low={stockData.low}
+                  volume={stockData.volume}
+                  tsInMillis={stockData.tsInMillis}
+                  lowPriceRange={stockData.lowPriceRange}
+                  highPriceRange={stockData.highPriceRange}
+                  totalBuyQty={stockData.totalBuyQty}
+                  totalSellQty={stockData.totalSellQty}
+                  lastTradeQty={stockData.lastTradeQty}
+                  lastTradeTime={stockData.lastTradeTime}
+                  oiDayChange={stockData.oiDayChange}
+                  oiDayChangePerc={stockData.oiDayChangePerc}
+                  lowTradeRange={stockData.lowTradeRange}
+                  highTradeRange={stockData.highTradeRange}
+                />
+              </div>
+              <div className={`block md:hidden`}>
+                <ScripTableMobile
+                  open={stockData.open}
+                  close={stockData.close}
+                  ltp={stockData.ltp}
+                  high={stockData.high}
+                  low={stockData.low}
+                  volume={stockData.volume}
+                  tsInMillis={stockData.tsInMillis}
+                  lowPriceRange={stockData.lowPriceRange}
+                  highPriceRange={stockData.highPriceRange}
+                  totalBuyQty={stockData.totalBuyQty}
+                  totalSellQty={stockData.totalSellQty}
+                  lastTradeQty={stockData.lastTradeQty}
+                  lastTradeTime={stockData.lastTradeTime}
+                  oiDayChange={stockData.oiDayChange}
+                  oiDayChangePerc={stockData.oiDayChangePerc}
+                  lowTradeRange={stockData.lowTradeRange}
+                  highTradeRange={stockData.highTradeRange}
+                />
+              </div>
+            </div>
           </div>
-          <div className={`block md:hidden`}>
-            <ScripTableMobile
-              open={stockData.open}
-              close={stockData.close}
-              ltp={stockData.ltp}
-              high={stockData.high}
-              low={stockData.low}
-              volume={stockData.volume}
-              tsInMillis={stockData.tsInMillis}
-              lowPriceRange={stockData.lowPriceRange}
-              highPriceRange={stockData.highPriceRange}
-              totalBuyQty={stockData.totalBuyQty}
-              totalSellQty={stockData.totalSellQty}
-              lastTradeQty={stockData.lastTradeQty}
-              lastTradeTime={stockData.lastTradeTime}
-              oiDayChange={stockData.oiDayChange}
-              oiDayChangePerc={stockData.oiDayChangePerc}
-              lowTradeRange={stockData.lowTradeRange}
-              highTradeRange={stockData.highTradeRange}
-            />
+          <div className="flex flex-col mx-12">
+            <div className="flex justify-center">
+              <TopMoversColumn data={topMovers} />
+            </div>
           </div>
         </div>
       </div>

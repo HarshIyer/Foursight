@@ -41,44 +41,44 @@ export default function HighChart(props: any) {
         {display === "YEARLY" && <YearlyChart data={yearlyCandlesData} />}
         <div className="flex flex-row justify-center">
           <button
-            className={`p-1 px-2 mx-2  rounded-lg ${
+            className={`p-1 px-2 mx-2  rounded-2xl ${
               display == "DAILY"
-                ? "bg-[#037a68] text-white"
+                ? "bg-white text-black border border-2 border-[#037a68]"
                 : "border border-2 border-[#858585]"
             } `}
             onClick={() => setDisplay("DAILY")}
           >
-            Daily
+            1D
           </button>
           <button
-            className={`p-1 px-2 mx-2   rounded-lg ${
+            className={`p-1 px-2 mx-2  rounded-2xl ${
               display == "WEEKLY"
-                ? "bg-[#037a68] text-white"
+                ? "bg-white text-black border border-2 border-[#037a68]"
                 : "border border-2 border-[#858585]"
-            }`}
+            } `}
             onClick={() => setDisplay("WEEKLY")}
           >
-            Weekly
+            1W
           </button>
           <button
-            className={`p-1 px-2 mx-2  rounded-lg ${
+            className={`p-1 px-2 mx-2  rounded-2xl ${
               display == "MONTHLY"
-                ? "bg-[#037a68] text-white"
+                ? "bg-white text-black border border-2 border-[#037a68]"
                 : "border border-2 border-[#858585]"
-            }`}
+            } `}
             onClick={() => setDisplay("MONTHLY")}
           >
-            Monthly
+            1M
           </button>
           <button
-            className={`p-1 px-2 mx-2  rounded-lg ${
+            className={`p-1 px-2 mx-2  rounded-2xl ${
               display == "YEARLY"
-                ? "bg-[#037a68] text-white"
+                ? "bg-white text-black border border-2 border-[#037a68]"
                 : "border border-2 border-[#858585]"
-            }`}
+            } `}
             onClick={() => setDisplay("YEARLY")}
           >
-            Yearly
+            1Y
           </button>
         </div>
       </div>
