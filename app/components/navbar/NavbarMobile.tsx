@@ -59,9 +59,9 @@ const NavbarMobile = (props: any) => {
             active={false}
           />
           <NavbarItem
-            title="Account"
+            title="Sign Up"
             component={<MdPerson />}
-            link="/account"
+            link="/signup"
             active={false}
           />
         </div>

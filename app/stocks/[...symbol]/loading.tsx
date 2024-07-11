@@ -1,3 +1,9 @@
+import Navbar from "@/app/components/navbar/Navbar";
+
 export default function Loading() {
-  return <div>Loading</div>;
+  return (
+    <div>
+      <Navbar />
+    </div>
+  );
 }

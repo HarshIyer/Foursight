@@ -3,7 +3,7 @@ import NavbarItem from "./NavbarItem";
 
 export default function NavbarPC() {
   return (
-    <div className="flex flex-row justify-between bg-[#BCBCBC] my-2 mx-2 rounded-xl px-2 py-1">
+    <div className="flex flex-row justify-between bg-white my-2  rounded-xl px-2 py-1">
       <div className="flex flex-row">
         <NavbarItem
           title="Home"
@@ -32,9 +32,9 @@ export default function NavbarPC() {
           active={false}
         />
         <NavbarItem
-          title="Account"
+          title="Sign Up"
           component={<FaHome />}
-          link="/account"
+          link="/signup"
           active={false}
         />
       </div>

@@ -12,3 +12,14 @@
 .grey-text {
   color: #3d3d3d;
 }
+
+.form-input {
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  margin-top: 4px;
+}
+
+form > label {
+  font-weight: 600;
+}
