@@ -8,6 +8,7 @@ import ScripTable from "./components/ScripTable";
 import HighChart from "./components/HighChart";
 import ScripTableMobile from "./components/ScripTableMobile";
 import TopMoversColumn from "./components/TopMoversColumn";
+import handleWatchlistAddition from "./components/handlers/handleWatchlistAddition";
 export const runtime = "edge";
 export default function Page({
   params,
@@ -97,22 +98,36 @@ export default function Page({
     <div>
       <Navbar />
       <div className="mx-6 my-6">
-        <h1 className="font-bold text-2xl md:text-3xl "> {companyName}</h1>
-        <div className="flex flex-row items-center">
-          <p className="text-black text-lg md:text-xl font-medium mr-3">
-            ₹ {JSON.stringify(stockData.ltp)}
-          </p>
-          <p
-            className={
-              stockData.dayChange >= 0
-                ? `green-text text-md md:text-lg font-semibold flex mt-auto items-end justify-end h-full`
-                : `red-text text-md md:text-lg font-semibold flex mt-auto items-end justify-end h-full`
-            }
-          >
-            {stockData.dayChange.toFixed(2)} (
-            {stockData.dayChange >= 0 ? "+" : ""}
-            {stockData.dayChangePerc.toFixed(2)}%)
-          </p>
+        <div className="flex flex-row md:flex-row">
+          <div className="flex flex-col">
+            <div className="flex flex-col md:flex-row md:items-center">
+              <h1 className="font-bold text-2xl md:text-3xl ">
+                {" "}
+                {companyName}
+              </h1>
+            </div>
+            <div className="flex flex-row items-center">
+              <p className="text-black text-lg md:text-xl font-medium mr-3">
+                ₹ {JSON.stringify(stockData.ltp)}
+              </p>
+              <p
+                className={
+                  stockData.dayChange >= 0
+                    ? `green-text text-md md:text-lg font-semibold flex mt-auto items-end justify-end h-full`
+                    : `red-text text-md md:text-lg font-semibold flex mt-auto items-end justify-end h-full`
+                }
+              >
+                {stockData.dayChange.toFixed(2)} (
+                {stockData.dayChange >= 0 ? "+" : ""}
+                {stockData.dayChangePerc.toFixed(2)}%)
+              </p>
+            </div>
+          </div>
+          <form onSubmit={() => handleWatchlistAddition(symbol)}>
+            <button className="my-2 md:my-0 bg-teal-700 hover:bg-teal-800 text-white font-bold py-2 px-4 rounded-2xl transition transition-all-1s md:ml-4">
+              + <span className="md:block hidden"> Watchlist</span>
+            </button>
+          </form>
         </div>
         <div className="flex justify-between mr-4 flex-col lg:flex-row ">
           <div className="md:w-[60%] ">

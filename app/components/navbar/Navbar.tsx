@@ -1,4 +1,3 @@
-import NavbarItem from "./NavbarItem";
 import NavbarMobile from "./NavbarMobile";
 import NavbarPC from "./NavbarPC";
 

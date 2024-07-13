@@ -42,18 +42,19 @@ export default function SearchPage() {
             if (
               scrip["Company Name"]
                 .toLowerCase()
-                .includes(searchQuery.toLowerCase())
+                .includes(searchQuery.toLowerCase()) ||
+              scrip["Scrip"].toLowerCase().includes(searchQuery.toLowerCase())
             ) {
               return (
                 <div
                   key={scrip["Scrip"]}
-                  className="p-2 border border-[#858585] mx-2 rounded-lg text-lg green-text min-w-[300px]"
+                  className="hover:border-teal-600 transition transition-all-0.5s p-2 border border-[#858585] mx-2 rounded-lg text-lg green-text min-w-[300px]"
                 >
                   <Link
                     href={`/stocks/${encodeURIComponent(scrip["Scrip"])}`}
                     className="flex flex-col justify-between h-full"
                   >
-                    <p>{scrip["Company Name"]}</p>
+                    <p className="font-semibold">{scrip["Company Name"]}</p>
                     <br></br>
                     <p className="text-sm mt-2 text-black">{scrip["Scrip"]}</p>
                   </Link>

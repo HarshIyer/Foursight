@@ -8,11 +8,8 @@ export default function NavbarItem(props: {
 }) {
   return (
     <div
-      // className={
-      //   "bg-[#037A68]  text-white py-2 px-3 mx-2 my-2 font-extrabold text-2xl md:text-xl rounded-lg hover:bg-teal-800 transition transition-all-0.5s"
-      // }
       className={
-        "text-[#037A68]   py-2 px-3 mx-2 md:mx-0 my-2 font-extrabold text-2xl md:text-xl rounded-lg hover:text-teal-800 transition transition-all-0.5s"
+        "text-[#037A68] py-2 px-3 mx-2 md:mr-1 my-2 font-semibold text-2xl md:text-xl rounded-lg hover:text-teal-800 transition transition-all-1.5s hover:bg-teal-700 hover:text-white"
       }
     >
       <div className="hidden md:block">
