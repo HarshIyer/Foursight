@@ -39,42 +39,42 @@ export default function HighChart(props: any) {
         {display === "WEEKLY" && <WeeklyChart data={weeklyCandlesData} />}
         {display === "MONTHLY" && <MonthlyChart data={monthlyCandlesData} />}
         {display === "YEARLY" && <YearlyChart data={yearlyCandlesData} />}
-        <div className="flex flex-row justify-center">
+        <div className="flex text-sm flex-row justify-center">
           <button
-            className={`p-1 px-2 mx-2  rounded-2xl ${
+            className={`p-1  px-3 mx-2  rounded-2xl ${
               display == "DAILY"
-                ? "bg-white text-black border border-2 border-[#037a68]"
-                : "border border-2 border-[#858585]"
+                ? "bg-white text-black border border-1 border-[#037a68]"
+                : "border border-1 border-[#858585]"
             } `}
             onClick={() => setDisplay("DAILY")}
           >
             1D
           </button>
           <button
-            className={`p-1 px-2 mx-2  rounded-2xl ${
+            className={`p-1 px-3 mx-2  rounded-2xl ${
               display == "WEEKLY"
-                ? "bg-white text-black border border-2 border-[#037a68]"
-                : "border border-2 border-[#858585]"
+                ? "bg-white text-black border border-1 border-[#037a68]"
+                : "border border-1 border-[#858585]"
             } `}
             onClick={() => setDisplay("WEEKLY")}
           >
             1W
           </button>
           <button
-            className={`p-1 px-2 mx-2  rounded-2xl ${
+            className={`p-1 px-3 mx-2  rounded-2xl ${
               display == "MONTHLY"
-                ? "bg-white text-black border border-2 border-[#037a68]"
-                : "border border-2 border-[#858585]"
+                ? "bg-white text-black border border-1 border-[#037a68]"
+                : "border border-1 border-[#858585]"
             } `}
             onClick={() => setDisplay("MONTHLY")}
           >
             1M
           </button>
           <button
-            className={`p-1 px-2 mx-2  rounded-2xl ${
+            className={`p-1 px-3 mx-2  rounded-2xl ${
               display == "YEARLY"
-                ? "bg-white text-black border border-2 border-[#037a68]"
-                : "border border-2 border-[#858585]"
+                ? "bg-white text-black border border-1 border-[#037a68]"
+                : "border border-1 border-[#858585]"
             } `}
             onClick={() => setDisplay("YEARLY")}
           >

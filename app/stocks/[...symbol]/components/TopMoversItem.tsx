@@ -9,21 +9,26 @@ export default function TopMoversItem(data: any) {
     <Link href={`/stocks/${encodeURIComponent(nseScriptCode)}`}>
       <div className="w-full  p-1 ">
         <div className="flex w-full flex-row justify-between my-1">
-          <div className="mr-4 md:mr-24 text-sm md:text-md font-bolder ml-2 ">
+          <div className="mr-2 md:mr-12 justify-center items-center text-sm md:text-sm font-bolder ml-2 ">
             {nseScriptCode}
           </div>
           <div className="flex flex-row items-end">
-            <p className="mr-2 text-sm md:text-md">{ltp}</p>
+            <p className="mr-2 text-sm md:text-sm">{ltp}</p>
             <p
               className={`${
-                dayChange >= 0 ? "green-text" : "red-text"
-              } "font-bolder"`}
+                dayChange >= 0 ? "green-text text-sm" : "red-text text-sm"
+              } "font-bold text-sm"`}
             >
-              {dayChangePerc >= 0 ? "+" : ""}
+              {dayChangePerc >= 0 ? "" : ""}
               {dayChange}
             </p>
-            <p className={dayChange >= 0 ? "green-text" : "red-text"}>
-              {dayChangePerc >= 0 ? "+" : ""}({dayChangePerc}%)
+            <p
+              className={
+                dayChange >= 0 ? "green-text text-sm" : "red-text text-sm"
+              }
+            >
+              ({dayChangePerc >= 0 ? "+" : ""}
+              {dayChangePerc}%)
             </p>
           </div>
         </div>

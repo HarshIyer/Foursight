@@ -23,7 +23,7 @@ export default function WeeklyChart(props: any) {
     },
 
     title: {
-      text: "This week's Price Movement",
+      text: "",
     },
     chart: {
       plotBackgroundColor: "",
@@ -41,15 +41,17 @@ export default function WeeklyChart(props: any) {
       },
     ],
     xAxis: {
+      tickLength: 0,
       title: {
-        text: "Time",
+        text: "",
       },
       type: "datetime",
       ordinal: true,
     },
     yAxis: {
+      tickLength: 0,
       title: {
-        text: "Price",
+        text: "",
       },
     },
   };

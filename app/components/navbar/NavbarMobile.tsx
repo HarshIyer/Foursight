@@ -29,8 +29,8 @@ const NavbarMobile = (props: any) => {
       <div
         className={
           display
-            ? "flex justify-center  w-screen translate-x-0 transition-transform"
-            : "translate-x-[-1000%] transition-transform"
+            ? "flex justify-center  w-screen translate-x-0 transition-transform mb-2"
+            : "translate-x-[-1000%] transition-transform mb-2"
         }
       >
         <div className="rounded-xl px-2 mx-10 flex flex-row justify-start border border-[#858585]  ">

@@ -5,12 +5,14 @@ import { Suspense, useRef } from "react";
 const timestamp = require("unix-timestamp");
 
 export default function DailyChart(props: any) {
-  if (typeof Highcharts === "object") {
-    HighchartsExporting(Highcharts);
-  }
-
   const data = props.data;
 
+  let chartColor = "#037a68";
+  if (data.length > 0) {
+    if (data[0][1] > data[data.length - 1][1]) {
+      chartColor = "#ce0000";
+    }
+  }
   const dataFormatted = data.map((d: [number, number]) => {
     return [d[0] * 1000, d[1]];
   });
@@ -23,7 +25,7 @@ export default function DailyChart(props: any) {
       enabled: false,
     },
     title: {
-      text: "Today's Price Movement",
+      text: "",
     },
     chart: {
       plotBackgroundColor: "",
@@ -35,7 +37,7 @@ export default function DailyChart(props: any) {
     series: [
       {
         name: "Price",
-        color: "#037a68",
+        color: chartColor,
         type: "line",
         data: dataFormatted,
       },
@@ -47,12 +49,15 @@ export default function DailyChart(props: any) {
         hour: "%H:%M",
       },
       title: {
-        text: "Time",
+        text: "",
       },
+      tickLength: 0,
     },
     yAxis: {
+      tickLength: 0,
+
       title: {
-        text: "Price",
+        text: "",
       },
     },
   };

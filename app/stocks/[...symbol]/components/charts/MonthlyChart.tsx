@@ -21,7 +21,7 @@ export default function MonthlyChart(props: any) {
       enabled: false,
     },
     title: {
-      text: "This month's Price Movement",
+      text: "",
     },
     chart: {
       plotBackgroundColor: "",
@@ -40,15 +40,17 @@ export default function MonthlyChart(props: any) {
       },
     ],
     xAxis: {
+      tickLength: 0,
       type: "datetime",
       title: {
-        text: "Time",
+        text: "",
       },
       ordinal: true,
     },
     yAxis: {
+      tickLength: 0,
       title: {
-        text: "Price",
+        text: "",
       },
     },
   };

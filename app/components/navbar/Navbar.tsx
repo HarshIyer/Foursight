@@ -1,3 +1,4 @@
+import NavbarDesktop from "./NavbarDesktop";
 import NavbarMobile from "./NavbarMobile";
 import NavbarPC from "./NavbarPC";
 
@@ -8,7 +9,7 @@ export default function Navbar() {
         <NavbarMobile />
       </div>
       <div className="hidden md:block">
-        <NavbarPC />
+        <NavbarDesktop />
       </div>
     </div>
   );

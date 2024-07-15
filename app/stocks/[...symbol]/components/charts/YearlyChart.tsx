@@ -2,7 +2,6 @@ import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 import HighchartsExporting from "highcharts/modules/exporting";
 import { useRef } from "react";
-const timestamp = require("unix-timestamp");
 
 export default function YearlyChart(props: any) {
   if (typeof Highcharts === "object") {
@@ -20,7 +19,7 @@ export default function YearlyChart(props: any) {
       enabled: false,
     },
     title: {
-      text: "This year's Price Movement",
+      text: "",
     },
     chart: {
       plotBackgroundColor: "",
@@ -38,15 +37,19 @@ export default function YearlyChart(props: any) {
       },
     ],
     xAxis: {
+      tickLength: 0,
+
       type: "datetime",
       title: {
-        text: "Time",
+        text: "",
       },
       ordinal: true,
     },
     yAxis: {
+      tickLength: 0,
+
       title: {
-        text: "Price",
+        text: "",
       },
     },
   };

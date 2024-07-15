@@ -12,37 +12,48 @@ export default function ScripTable(stockData: any) {
     dayChange,
     dayChangePerc,
     lastTradeQty,
+    ltp,
     lastTradeTime,
   } = stockData;
 
   return (
-    <table className="border-separate border-spacing-4">
+    <table className="text-sm md:text-base border-separate border-spacing-x-0 border-spacing-y-3">
       <tbody>
         <tr>
-          <td className="table-title font-semibold pr-12">Today&apos;s Open</td>
-          <td className="pr-4">₹ {open}</td>
-          <td className="table-title font-semibold pr-12">Today&apos; High</td>
-          <td className="pr-4">₹ {high}</td>
-          <td className="table-title font-semibold pr-12">Upper Circuit</td>
-          <td className="pr-4">₹ {highPriceRange}</td>
-        </tr>
-        <tr>
-          <td className="table-title font-semibold pr-12">
-            Yesterday&apos;s Close
-          </td>
-          <td className="pr-4">₹ {close}</td>
-          <td className="table-title font-semibold pr-12">Today&apos; Low</td>
-          <td className="pr-4">₹ {low}</td>
-          <td className="table-title font-semibold pr-12">Lower Circuit</td>
-          <td className="pr-4">₹ {lowPriceRange}</td>
-        </tr>
-        <tr>
+          <td className="table-title font-semibold pr-12">Open</td>
           <td className="table-title font-semibold pr-12">Volume</td>
-          <td className="pr-4">{volume}</td>
-          <td className="table-title font-semibold pr-12">Total Buy Qty</td>
-          <td className="pr-4">{totalBuyQty}</td>
-          <td className="table-title font-semibold pr-12">Total Sell Qty</td>
-          <td className="pr-4">{totalSellQty}</td>
+          <td className="table-title font-semibold pr-12">Upper Circuit</td>
+        </tr>
+        <tr>
+          <td className="pr-4 green-text font-normal tracking-wide">
+            ₹ {open}
+          </td>
+          <td className="pr-4 green-text font-normal tracking-wide">
+            {volume.toLocaleString("hi")}
+          </td>
+          <td className="pr-4 green-text font-normal tracking-wide">
+            ₹ {highPriceRange}
+          </td>
+        </tr>
+        <tr>
+          <td className="table-title font-semibold pr-12">Close</td>
+          <td className="table-title font-semibold pr-12">Day Change</td>
+          <td className="table-title font-semibold pr-12">Lower Circuit</td>
+        </tr>
+        <tr>
+          <td className="pr-4 green-text font-normal tracking-wide ">
+            ₹ {close}
+          </td>
+          <td
+            className={`pr-4  font-normal tracking-wide ${
+              dayChangePerc > 0 ? "green-text" : "red-text"
+            }`}
+          >
+            {dayChangePerc.toFixed(2)}%
+          </td>
+          <td className="pr-4 green-text font-normal tracking-wide ">
+            ₹ {lowPriceRange}
+          </td>
         </tr>
       </tbody>
     </table>

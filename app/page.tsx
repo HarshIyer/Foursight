@@ -13,7 +13,7 @@ export default function Home() {
   setInterval(hydrate, 10000);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col md:mx-[15%]">
       <Navbar />
       <div className="mx-4 text-6xl my-12 font-extrabold">
         <h1>
