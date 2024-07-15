@@ -2,7 +2,6 @@ import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 import HighchartsExporting from "highcharts/modules/exporting";
 import { useRef } from "react";
-const timestamp = require("unix-timestamp");
 
 export default function WeeklyChart(props: any) {
   if (typeof Highcharts === "object") {

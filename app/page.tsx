@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div className="flex flex-col md:mx-[15%]">
       <Navbar />
-      <div className="mx-4 text-6xl my-12 font-extrabold">
+      <div className="text-6xl my-12 font-extrabold">
         <h1>
           Hello, <span className="green-text">Harsh</span>
         </h1>

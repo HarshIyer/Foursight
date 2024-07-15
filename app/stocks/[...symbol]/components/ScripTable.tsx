@@ -36,7 +36,9 @@ export default function ScripTable(stockData: any) {
           </td>
         </tr>
         <tr>
-          <td className="table-title font-semibold pr-12">Close</td>
+          <td className="table-title font-semibold pr-12">
+            Yesterday&apos;s Close
+          </td>
           <td className="table-title font-semibold pr-12">Day Change</td>
           <td className="table-title font-semibold pr-12">Lower Circuit</td>
         </tr>

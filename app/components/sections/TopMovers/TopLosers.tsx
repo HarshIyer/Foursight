@@ -5,7 +5,7 @@ export default function TopLosers(props: { type: string; apiData: any }) {
   let topLosers = props.apiData;
 
   return (
-    <div className="mx-4 mb-12 my-4">
+    <div className=" mb-12 my-4">
       <Link href="/topmovers">
         <h1 className="text-2xl md:text-3xl font-bold">
           Top{" "}

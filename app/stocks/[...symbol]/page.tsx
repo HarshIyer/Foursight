@@ -81,7 +81,6 @@ export default function Page({
         console.error(err);
       }
       setTopMovers(data?.data);
-      console.log(data?.data);
       return data?.data;
     }
     getTopMoverData();
