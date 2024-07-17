@@ -67,6 +67,8 @@ export default function LoginPage() {
     }
     if (results?.status === 200) {
       notifySuccess("Logged in successfully");
+      // cookies().set("token", results.data.token);
+      localStorage.setItem("token", results.data.token);
       setTimeout(() => {
         router.push("/dashboard");
       }, 3000);
