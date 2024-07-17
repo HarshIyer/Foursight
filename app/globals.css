@@ -12,6 +12,9 @@
 .grey-text {
   color: #3d3d3d;
 }
+input {
+  background-color: transparent;
+}
 
 .form-input {
   border-radius: 8px;
@@ -22,4 +25,17 @@
 
 form > label {
   font-weight: 600;
+}
+
+body {
+  transition-property: opacity, transform, filter, background;
+  transition-timing-function: ease-in-out;
+  transition-duration: 500ms;
+}
+
+.page-transition {
+  opacity: 0;
+  background: #037a68;
+  transform: translateY(40px);
+  filter: blur(12px);
 }

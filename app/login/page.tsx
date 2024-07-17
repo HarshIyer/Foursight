@@ -10,6 +10,7 @@ import { apiURL } from "../components/apiURL";
 import { useRouter } from "next/navigation";
 var crypto = require("crypto");
 import { setCookie } from "cookies-next";
+import { NavTransition } from "../components/navbar/NavTransition";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -149,9 +150,12 @@ export default function LoginPage() {
                 </button>
                 <p className="text-sm mt-2">
                   Don&apos;t have an account?{" "}
-                  <Link href={"/signup"} className="green-text hover:underline">
+                  <NavTransition
+                    href={"/signup"}
+                    className="green-text hover:underline"
+                  >
                     Sign Up
-                  </Link>{" "}
+                  </NavTransition>{" "}
                 </p>
               </div>
             </form>

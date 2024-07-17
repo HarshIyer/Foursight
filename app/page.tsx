@@ -6,6 +6,7 @@ import Navbar from "./components/navbar/Navbar";
 import TopMovers from "./components/sections/TopMovers/TopMovers";
 import Link from "next/link";
 import Image from "next/image";
+import { NavTransition } from "./components/navbar/NavTransition";
 export default function Home() {
   function hydrate() {}
 
@@ -34,11 +35,11 @@ export default function Home() {
         <div></div>
       </div>
       <div className="flex justify-center">
-        <Link href={"/signup"}>
+        <NavTransition className="" href={"/signup"}>
           <button className="mt-12 bg-teal-700 hover:bg-teal-500 transition transition-all-0.5s text-white px-4 py-2 rounded-md">
             Get Started{" "}
           </button>
-        </Link>
+        </NavTransition>
       </div>
     </div>
   );

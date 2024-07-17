@@ -10,6 +10,7 @@ import { apiURL } from "../components/apiURL";
 var crypto = require("crypto");
 import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { NavTransition } from "../components/navbar/NavTransition";
 
 const notifySuccess = (message: string) =>
   toast.success(message, {
@@ -147,9 +148,12 @@ export default function SignUpPage() {
                 </button>
                 <p className="text-sm mt-2">
                   Already have an account?{" "}
-                  <Link href={"/login"} className="green-text hover:underline">
+                  <NavTransition
+                    href={"/login"}
+                    className="green-text hover:underline"
+                  >
                     Login
-                  </Link>{" "}
+                  </NavTransition>{" "}
                 </p>
               </div>
             </form>
