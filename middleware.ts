@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import axios from "axios";
 import { apiURL } from "./app/components/apiURL";
 export async function middleware(request: NextRequest) {
-  let currentUser = false; //request.cookies.get("token")?.value
+  let currentUser = false;
   let results;
 
   let token = request.cookies.get("token")?.value;
@@ -25,6 +25,9 @@ export async function middleware(request: NextRequest) {
   if (currentUser && !request.nextUrl.pathname.startsWith("/dashboard")) {
     return Response.redirect(new URL("/dashboard", request.url));
   }
+  if (currentUser && request.nextUrl.pathname.startsWith("/login")) {
+    return Response.redirect(new URL("/dashboard", request.url));
+  }
 
   if (!currentUser && !request.nextUrl.pathname.startsWith("/login")) {
     return Response.redirect(new URL("/login", request.url));
@@ -32,5 +35,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard"],
+  matcher: ["/dashboard", "/login"],
 };

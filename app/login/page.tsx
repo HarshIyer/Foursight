@@ -1,7 +1,6 @@
 "use client";
 import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const { createHash } = require("crypto");
 import { usernameRegex } from "../components/regexHandlers";
 import { useState } from "react";
 import Navbar from "../components/navbar/Navbar";
@@ -10,10 +9,18 @@ import axios from "axios";
 import { apiURL } from "../components/apiURL";
 import { useRouter } from "next/navigation";
 var crypto = require("crypto");
+import { setCookie } from "cookies-next";
 
 export default function LoginPage() {
   const router = useRouter();
-
+  function parseJwt(token: string) {
+    if (!token) {
+      return;
+    }
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace("-", "+").replace("_", "/");
+    return JSON.parse(window.atob(base64));
+  }
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -67,11 +74,13 @@ export default function LoginPage() {
     }
     if (results?.status === 200) {
       notifySuccess("Logged in successfully");
-      // cookies().set("token", results.data.token);
-      localStorage.setItem("token", results.data.token);
+      setCookie("token", results.data.token, {
+        expires: new Date(parseJwt(results.data.token).exp * 1000),
+      });
+      console.log(parseJwt(results.data.token).exp);
       setTimeout(() => {
         router.push("/dashboard");
-      }, 3000);
+      }, 1000);
     } else if (results?.status === 401) {
       notifyError("Incorrect Credentials");
     } else {
