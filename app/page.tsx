@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col md:mx-[15%]">
-      <Navbar />
+      <Navbar logStatus={true} />
       <div className="flex flex-col md:flex-row">
         <div className="mt-12 w-[50%]">
           <h1 className="text-6xl font-medium green-text">Foursight</h1>

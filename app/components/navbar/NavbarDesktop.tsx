@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { CiSearch } from "react-icons/ci";
 import { SlGraph } from "react-icons/sl";
 import { NavTransition } from "./NavTransition";
+import { useEffect, useState } from "react";
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -14,7 +15,16 @@ interface NavTransitionProps extends LinkProps {
   href: string;
 }
 
-export default function NavbarDesktop() {
+export default function NavbarDesktop(props: any) {
+  let logStatus = props;
+  const [buttonText, setButtonText] = useState("Login/Register");
+
+  useEffect(() => {
+    if (logStatus) {
+      setButtonText("Logout");
+    }
+  }, [logStatus]);
+
   const router = useRouter();
   const handleTransition = async (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -39,7 +49,7 @@ export default function NavbarDesktop() {
     query =
       (document.getElementById("search") as HTMLInputElement)?.value || "";
     const body = document.querySelector("body");
-    handleTransition(e, query, `/search?query=${query}`);
+    handleTransition(e, query, `/stocks?search=${query}`);
   }
   return (
     <div className="flex  flex-col ">
@@ -66,9 +76,12 @@ export default function NavbarDesktop() {
               </button>
             </form>
           </div>
-          <NavTransition href={"/signup"} className="flex">
+          <NavTransition
+            href={logStatus ? "/logout" : "/signup"}
+            className="flex"
+          >
             <button className="bg-[#037A68] py-1 px-3 text-sm text-white rounded-md  ml-3">
-              Login/Register
+              {buttonText}
             </button>
           </NavTransition>
         </div>
