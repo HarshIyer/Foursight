@@ -73,7 +73,7 @@ export default function SignUpPage() {
     } else if (results?.status === 409) {
       notifyError("Username or email already exists");
     } else {
-      notifyError("Something went wrong. Please try again later");
+      notifyError("Server error");
     }
   }
 

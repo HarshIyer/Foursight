@@ -22,6 +22,8 @@ export default function NavbarDesktop(props: any) {
   useEffect(() => {
     if (logStatus) {
       setButtonText("Logout");
+    } else {
+      setButtonText("Login/Register");
     }
   }, [logStatus]);
 

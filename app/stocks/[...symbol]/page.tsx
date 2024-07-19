@@ -68,7 +68,7 @@ export default function Page({
       } catch (err) {
         console.error(err);
       }
-      setStockData(data?.data.stockQuote);
+
       return data?.data.stockQuote;
     }
     async function getTopMoverData() {
@@ -126,6 +126,7 @@ export default function Page({
           <div className="xl:w-[60%]">
             <div>
               <LTP
+                symbol={symbol}
                 ltp={stockData.ltp}
                 dayChange={stockData.dayChange}
                 dayChangePerc={stockData.dayChangePerc}

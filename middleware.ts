@@ -4,6 +4,7 @@ import { apiURL } from "./app/components/apiURL";
 export async function middleware(request: NextRequest) {
   if (
     request.nextUrl.pathname === "/dashboard" ||
+    request.nextUrl.pathname === "/" ||
     request.nextUrl.pathname === "/login"
   ) {
     let currentUser = false;

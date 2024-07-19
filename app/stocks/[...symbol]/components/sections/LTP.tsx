@@ -1,6 +1,74 @@
+import { apiURL } from "@/app/components/apiURL";
+import axios from "axios";
+import { getCookie } from "cookies-next";
+import { toast, Slide, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function LTP(props: any) {
+  const notifySuccess = (message: string) =>
+    toast.success(message, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Slide,
+    });
+  const notifyError = (message: string) =>
+    toast.error(message, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Slide,
+    });
+
+  async function handleWatchlistAddition() {
+    console.log("Added to watchlist");
+    let symbol = props.symbol || "";
+    let results;
+    let token = getCookie("token");
+    try {
+      results = await axios({
+        method: "post",
+        url: apiURL + "/transaction/addWatchlist",
+        headers: { Authorization: "Bearer " + token },
+        data: {
+          scrip: symbol,
+        },
+      });
+    } catch (err: any) {
+      results = err.response;
+    }
+    if (results?.status === 200) {
+      notifySuccess("Added to watchlist");
+    }
+    if (results?.status === 409) {
+      notifyError("Already in watchlist!");
+    }
+  }
   return (
     <div className="flex flex-col mt-4">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Slide}
+      />
       <div className="flex flex-col md:flex-row md:items-center">
         <h1 className="font-medium text-2xl md:text-2xl mr-2">
           {" "}
@@ -13,7 +81,10 @@ export default function LTP(props: any) {
           <button className="flex bg-[#CF0000] py-0 px-2 text-base text-white rounded-md hover:bg-red-700 transition transition-all-0.5s ml-3">
             Sell
           </button>
-          <button className="flex border border-[#B8B8B8] bg-white py-0 px-2 text-base text-black rounded-md  ml-3">
+          <button
+            onClick={handleWatchlistAddition}
+            className="flex border border-[#B8B8B8] bg-white py-0 px-2 text-base text-black rounded-md  ml-3"
+          >
             Watch
           </button>
         </div>
