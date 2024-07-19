@@ -39,3 +39,10 @@ body {
   transform: translateY(40px);
   filter: blur(12px);
 }
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  width: 400px;
+}

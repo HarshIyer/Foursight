@@ -4,14 +4,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { apiURL } from "@/app/components/apiURL";
 import { symbols } from "@/app/components/symbols";
-import ScripTable from "./components/ScripTable";
 import HighChart from "./components/HighChart";
-import ScripTableMobile from "./components/ScripTableMobile";
 import TopMoversColumn from "./components/TopMoversColumn";
-import handleWatchlistAddition from "./components/handlers/handleWatchlistAddition";
 import Link from "next/link";
 import LTP from "./components/sections/LTP";
-import Statistics from "./components/sections/Statistics/Stats";
 import Stats from "./components/sections/Statistics/Stats";
 export const runtime = "edge";
 export default function Page({

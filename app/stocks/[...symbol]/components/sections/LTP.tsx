@@ -3,8 +3,15 @@ import axios from "axios";
 import { getCookie } from "cookies-next";
 import { toast, Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+import BuyPopup from "../handlers/BuyPopup";
+import SellPopup from "../handlers/SellPopup";
 
 export default function LTP(props: any) {
+  let symbol = props.symbol || "";
+  let token = getCookie("token");
+
   const notifySuccess = (message: string) =>
     toast.success(message, {
       position: "top-right",
@@ -31,10 +38,7 @@ export default function LTP(props: any) {
     });
 
   async function handleWatchlistAddition() {
-    console.log("Added to watchlist");
-    let symbol = props.symbol || "";
     let results;
-    let token = getCookie("token");
     try {
       results = await axios({
         method: "post",
@@ -75,12 +79,35 @@ export default function LTP(props: any) {
           {props.companyName}
         </h1>
         <div className="hidden md:flex flex-row">
-          <button className="flex bg-[#037A68] py-0 px-2 text-base text-white rounded-md hover:bg-teal-800 transition transition-all-0.5s ml-3">
-            Buy
-          </button>
-          <button className="flex bg-[#CF0000] py-0 px-2 text-base text-white rounded-md hover:bg-red-700 transition transition-all-0.5s ml-3">
-            Sell
-          </button>
+          <div>
+            <Popup
+              className="border border-2 rounded-xl w-[200px]"
+              contentStyle={{ width: "fit-content" }}
+              trigger={
+                <button className="flex bg-[#037A68] py-0 px-2 text-base text-white rounded-md hover:bg-teal-800 transition transition-all-0.5s">
+                  Buy
+                </button>
+              }
+              modal
+            >
+              <BuyPopup companyName={props.companyName} ltp={props.ltp} />
+            </Popup>
+          </div>
+
+          <div>
+            <Popup
+              className="border border-2 rounded-xl w-[200px]"
+              contentStyle={{ width: "fit-content" }}
+              trigger={
+                <button className="flex bg-[#CF0000] py-0 px-2 text-base text-white rounded-md hover:bg-red-700 transition transition-all-0.5s ml-3">
+                  Sell
+                </button>
+              }
+              modal
+            >
+              <SellPopup companyName={props.companyName} ltp={props.ltp} />
+            </Popup>
+          </div>
           <button
             onClick={handleWatchlistAddition}
             className="flex border border-[#B8B8B8] bg-white py-0 px-2 text-base text-black rounded-md  ml-3"
