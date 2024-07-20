@@ -20,7 +20,7 @@ export default function Scrip(props: {
         <div className="md:text-2xl font-extrabold text-black">Loading...</div>
       }
     >
-      <div className=" md:min-w-[500px]  my-2 flex flex-col border border-2 p-4 rounded-lg border-[#858585]]">
+      <div className=" my-2 flex flex-col border border-2 p-4 rounded-lg border-[#858585]]">
         <Link href={`/stocks/${encodeURIComponent(props.symbol)}`}>
           <h1
             className={

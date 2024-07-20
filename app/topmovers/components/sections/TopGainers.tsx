@@ -24,7 +24,7 @@ export default function TopGainers(props: { type: string; apiData: any }) {
         </h1>
       </Link>
 
-      <div className="grid gap-x-4 gap-y-4 grid-cols-1 sm:grid-cols-1 xl:grid-cols-2">
+      <div className="grid gap-x-4 gap-y-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2">
         {topGainers?.map((scrip: any, index: number) => (
           <Scrip
             key={index}
