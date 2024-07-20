@@ -1,21 +1,7 @@
-/* eslint-disable react/jsx-no-undef */
-/* eslint-disable @next/next/no-img-element */
 "use client";
-import { useEffect } from "react";
 import Navbar from "./components/navbar/Navbar";
-import TopMovers from "./components/sections/TopMovers/TopMovers";
-import Link from "next/link";
-import Image from "next/image";
 import { NavTransition } from "./components/navbar/NavTransition";
 export default function Home() {
-  // function hydrate() {}
-
-  // useEffect(() => {
-  //   hydrate();
-  // }, []);
-
-  // setInterval(hydrate, 10000);
-
   return (
     <div className="flex flex-col md:mx-[15%]">
       <Navbar logStatus={false} />

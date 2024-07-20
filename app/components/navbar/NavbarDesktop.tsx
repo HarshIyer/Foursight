@@ -1,5 +1,4 @@
 "use client";
-import Link, { LinkProps } from "next/link";
 import { getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import { CiSearch } from "react-icons/ci";

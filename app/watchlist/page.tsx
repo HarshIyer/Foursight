@@ -7,15 +7,6 @@ import axios from "axios";
 import { getCookie } from "cookies-next";
 export default function WatchlistPage() {
   const [watchlistData, setWatchlistData] = useState([]);
-  const [display, setDisplay] = useState(false);
-
-  function isEmpty(obj: Object) {
-    for (const prop in obj) {
-      if (Object.hasOwn(obj, prop)) {
-        return false;
-      }
-    }
-
     return true;
   }
 

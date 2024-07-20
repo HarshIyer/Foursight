@@ -1,11 +1,8 @@
 "use client";
 import { useState } from "react";
 import Navbar from "../components/navbar/Navbar";
-import Link from "next/link";
-var bcrypt = require("bcryptjs");
 import { usernameRegex, emailRegex } from "../components/regexHandlers";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import { apiURL } from "../components/apiURL";
 var crypto = require("crypto");
 import { Slide, ToastContainer, toast } from "react-toastify";

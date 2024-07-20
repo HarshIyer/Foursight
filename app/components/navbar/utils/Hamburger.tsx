@@ -32,14 +32,14 @@ export default function Hamburger() {
       id: 1,
       href: "/watchlist",
     },
-    // {
-    //   title: "Top Movers",
-    //   id: 2,
-    //   href: "/topmovers",
-    // },
+    {
+      title: "Top Movers",
+      id: 2,
+      href: "/topmovers",
+    },
     {
       title: "Log Out",
-      id: 2,
+      id: 3,
       href: "/logout",
     },
   ];
@@ -50,7 +50,7 @@ export default function Hamburger() {
         <div>
           <button
             type="button"
-            className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all duration-300 ease-in-out"
+            className="inline-flex w-full justify-center rounded-md border border-gray-300 px-2 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 transition-all duration-300 ease-in-out"
             id="menu-button"
             aria-expanded={isOpen}
             aria-haspopup="true"
