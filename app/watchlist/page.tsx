@@ -7,9 +7,6 @@ import axios from "axios";
 import { getCookie } from "cookies-next";
 export default function WatchlistPage() {
   const [watchlistData, setWatchlistData] = useState([]);
-    return true;
-  }
-
   useEffect(() => {
     const token = getCookie("token");
     async function getWatchListData() {
