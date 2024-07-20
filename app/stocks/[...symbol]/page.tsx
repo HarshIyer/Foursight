@@ -114,8 +114,8 @@ export default function Page({
             </Link>{" "}
             &gt;{" "}
           </p>
-          <p className="text-xs text-[#1E1E1E] font-light mr-2">
-            {companyName}
+          <p className="line-clamp-1 text-xs text-[#1E1E1E] font-light mr-2">
+            {symbol}
           </p>
         </div>
         <div className="flex w-full md:flex-row justify-between">

@@ -32,14 +32,14 @@ export default function Hamburger() {
       id: 1,
       href: "/watchlist",
     },
-    {
-      title: "Top Movers",
-      id: 2,
-      href: "/topmovers",
-    },
+    // {
+    //   title: "Top Movers",
+    //   id: 2,
+    //   href: "/topmovers",
+    // },
     {
       title: "Log Out",
-      id: 3,
+      id: 2,
       href: "/logout",
     },
   ];

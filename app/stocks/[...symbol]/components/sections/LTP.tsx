@@ -59,7 +59,7 @@ export default function LTP(props: any) {
     }
   }
   return (
-    <div className="flex flex-col mt-4">
+    <div className="flex  flex-col mt-4">
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -74,8 +74,7 @@ export default function LTP(props: any) {
         transition={Slide}
       />
       <div className="flex flex-col md:flex-row md:items-center">
-        <h1 className="font-medium text-2xl md:text-2xl mr-2">
-          {" "}
+        <h1 className="font-medium mr-4 break-words sm:truncate  text-xl md:text-2xl">
           {props.companyName}
         </h1>
         <div className="hidden md:flex flex-row">

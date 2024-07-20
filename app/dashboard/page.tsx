@@ -18,14 +18,16 @@ export default function DashboardPage() {
   return (
     <div className="flex flex-col md:mx-[15%]">
       <Navbar logStatus={true} />
-      <div className="text-6xl my-12 font-extrabold">
-        <h1>
-          Hello, <span className="green-text">{username}</span>
-        </h1>
-      </div>
-      <div>
-        {/* <Watchlist /> */}
-        <TopMovers />
+      <div className="mx-6 ">
+        <div className=" text-6xl my-12 font-extrabold">
+          <h1>
+            Hello, <span className="green-text">{username}</span>
+          </h1>
+        </div>
+        <div>
+          {/* <Watchlist /> */}
+          <TopMovers />
+        </div>
       </div>
     </div>
   );
