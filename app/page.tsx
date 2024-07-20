@@ -8,13 +8,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { NavTransition } from "./components/navbar/NavTransition";
 export default function Home() {
-  function hydrate() {}
+  // function hydrate() {}
 
-  useEffect(() => {
-    hydrate();
-  }, []);
+  // useEffect(() => {
+  //   hydrate();
+  // }, []);
 
-  setInterval(hydrate, 10000);
+  // setInterval(hydrate, 10000);
 
   return (
     <div className="flex flex-col md:mx-[15%]">

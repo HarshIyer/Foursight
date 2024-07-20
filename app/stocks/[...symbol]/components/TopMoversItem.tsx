@@ -19,7 +19,6 @@ export default function TopMoversItem(data: any) {
                 dayChange >= 0 ? "green-text text-sm" : "red-text text-sm"
               } "font-bold text-sm"`}
             >
-              {dayChangePerc >= 0 ? "" : ""}
               {dayChange}
             </p>
             <p

@@ -1,29 +1,25 @@
 "use client";
 import Link, { LinkProps } from "next/link";
-
+import { getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import { CiSearch } from "react-icons/ci";
 import { SlGraph } from "react-icons/sl";
 import { NavTransition } from "./NavTransition";
 import { useEffect, useState } from "react";
+import Hamburger from "./utils/Hamburger";
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-interface NavTransitionProps extends LinkProps {
-  children: React.ReactNode;
-  className: string;
-  href: string;
-}
 
 export default function NavbarDesktop(props: any) {
-  let logStatus = props;
-  const [buttonText, setButtonText] = useState("Login/Register");
+  const [logStatus, setLogStatus] = useState(false);
 
   useEffect(() => {
-    if (logStatus) {
-      setButtonText("Logout");
+    const token = getCookie("token");
+    if (token) {
+      setLogStatus(true);
     } else {
-      setButtonText("Login/Register");
+      setLogStatus(false);
     }
   }, [logStatus]);
 
@@ -65,27 +61,33 @@ export default function NavbarDesktop(props: any) {
           </p>
         </div>
         <div className="flex flex-row">
-          <div className="flex flex-row items-center border border-1 border-[#C6C6C6] rounded-lg px-2 py-1">
-            <form onSubmit={handleSearch}>
+          <div className="flex flex-row items-center border border-1 border-[#C6C6C6] hover:border-[#858585] transition transition-all-0.5s rounded-lg px-2 py-1">
+            <form
+              className="flex flex-row items-center justify-center"
+              onSubmit={handleSearch}
+            >
               <input
                 id="search"
                 className="border-none bg-transparent focus:border-none focus:outline-none border-none px-2 text-base rounded-lg"
                 type="text"
                 placeholder="Search for stocks"
               />
-              <button>
+              <button className="my-auto">
                 <CiSearch className="hover:green-text" />
               </button>
             </form>
           </div>
-          <NavTransition
-            href={logStatus ? "/logout" : "/signup"}
-            className="flex"
-          >
-            <button className="bg-[#037A68] py-1 px-3 text-sm text-white rounded-md  ml-3">
-              {buttonText}
-            </button>
-          </NavTransition>
+          {!logStatus && (
+            <NavTransition
+              href={logStatus ? "/logout" : "/signup"}
+              className="flex "
+            >
+              <button className="hover:bg-teal-600 transition transition-all-0.5s bg-[#037A68] py-1 px-3 text-sm text-white rounded-md  ml-3">
+                Login/Register
+              </button>
+            </NavTransition>
+          )}
+          {logStatus && <Hamburger />}
         </div>
       </div>
       <hr className="w-full mt-2" />

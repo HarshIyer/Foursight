@@ -4,7 +4,6 @@ import { apiURL } from "./app/components/apiURL";
 export async function middleware(request: NextRequest) {
   if (
     request.nextUrl.pathname === "/dashboard" ||
-    request.nextUrl.pathname === "/" ||
     request.nextUrl.pathname === "/login"
   ) {
     let currentUser = false;
@@ -37,9 +36,14 @@ export async function middleware(request: NextRequest) {
     if (!currentUser && !request.nextUrl.pathname.startsWith("/login")) {
       return Response.redirect(new URL("/login", request.url));
     }
+  } else if (request.nextUrl.pathname === "/") {
+    let token = request.cookies.get("token")?.value;
+    if (token) {
+      return Response.redirect(new URL("/dashboard", request.url));
+    }
   }
 }
 
 export const config = {
-  matcher: ["/dashboard", "/login"],
+  matcher: ["/dashboard", "/login", "/"],
 };

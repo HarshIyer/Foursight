@@ -45,7 +45,7 @@ export default function LTP(props: any) {
         url: apiURL + "/transaction/addWatchlist",
         headers: { Authorization: "Bearer " + token },
         data: {
-          scrip: symbol,
+          scrip: decodeURIComponent(symbol),
         },
       });
     } catch (err: any) {
