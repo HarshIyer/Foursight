@@ -1,8 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import { CiSearch } from "react-icons/ci";
-import { SlGraph } from "react-icons/sl";
 import { NavTransition } from "./NavTransition";
 import { useEffect, useState } from "react";
 import Hamburger from "./utils/Hamburger";
@@ -52,7 +52,7 @@ export default function NavbarDesktop(props: any) {
     <div className="flex  flex-col ">
       <div className="flex mt-2 items-center flex-row justify-between  text-xl">
         <div className="flex flex-row items-center">
-          <SlGraph className="green-text" />
+          <img src="/FoursightLogo.png" alt="Foursight Logo" className="h-8" />
           <p className="ml-2 font-medium green-text">
             <NavTransition className="" href="/">
               Foursight

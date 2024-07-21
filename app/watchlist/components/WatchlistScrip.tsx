@@ -17,18 +17,18 @@ export default function WatchlistScrip(props: any) {
   }
   let companyName = getCompanyName(symbol) || "";
   return (
-    <div>
+    <div className="">
       <div className="flex flex-col border border-2 border-[#E0E0E0] p-4 px-6  rounded-lg">
         <Link href={`/stocks/${encodeURIComponent(symbol)}`}>
           <div>
             <h1
               className={`${
                 dayChange > 0 ? "green-text" : "red-text"
-              } text-xl mb-6 font-bold`}
+              } text-xl mb-6 font-bold  line-clamp-1`}
             >
               {companyName}
             </h1>
-            <div className="flex w-full justify-between">
+            <div className="flex font-semibold w-full justify-between">
               <h1>₹{ltp}</h1>
               <div className="flex flex-row">
                 <h1
@@ -51,7 +51,7 @@ export default function WatchlistScrip(props: any) {
           </div>
         </Link>
         <div className="w-full">
-          <button className="w-full text-center bg-white border border-2 border-[#E0E0E0] hover:bg-[#ececec] transition transition-all-0.5s px-4 py-2 rounded-md mt-2">
+          <button className="font-light w-full text-center border border-2 border-[#E0E0E0] hover:bg-[#ececec] transition transition-all-0.5s px-4 py-2 rounded-md mt-2">
             Remove
           </button>
         </div>
