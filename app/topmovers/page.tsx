@@ -6,6 +6,7 @@ import TopLosers from "./components/sections/TopLosers";
 import TopVolume from "./components/sections/TopVolume";
 import axios from "axios";
 import { apiURL } from "../components/apiURL";
+import { NavTransition } from "../components/navbar/NavTransition";
 
 export default function TopMovers() {
   const [topMovers, setTopMovers] = useState({
@@ -40,7 +41,17 @@ export default function TopMovers() {
   return (
     <div className="md:mx-[15%]">
       <Navbar />
-      <div className="flex justify-start mt-4 mx-6 md:mx-0">
+      <div className="flex flex-col justify-start mt-4 mx-6 md:mx-0">
+        <div className="flex flex-row mb-4">
+          <p className="text-xs text-[#1E1E1E] font-light mr-2 ">
+            <NavTransition className="hover:underline" href={"/"}>
+              {" "}
+              Home
+            </NavTransition>{" "}
+            &gt;{" "}
+          </p>
+          <p className="text-xs text-[#1E1E1E] font-light mr-2"> Top Movers</p>
+        </div>
         <div>
           <div className="flex text-sm md:text-base flex-row">
             <button
