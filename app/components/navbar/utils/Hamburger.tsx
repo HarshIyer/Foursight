@@ -23,23 +23,23 @@ export default function Hamburger() {
 
   let options = [
     {
-      title: "My Account",
-      id: 0,
-      href: "/dashboard",
+      title: "Portfolio",
+      id: 1,
+      href: "/portfolio",
     },
     {
       title: "Watchlist",
-      id: 1,
+      id: 2,
       href: "/watchlist",
     },
     {
       title: "Top Movers",
-      id: 2,
+      id: 3,
       href: "/topmovers",
     },
     {
       title: "Log Out",
-      id: 3,
+      id: 4,
       href: "/logout",
     },
   ];

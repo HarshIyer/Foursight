@@ -21,7 +21,7 @@ export default function SellPopup(props: any) {
 
   return (
     <div className="bg-white mx-4 my-2">
-      <div className="flex flex-row items-end">
+      <div className="flex flex-row">
         <h1 className="text-3xl  red-text mr-2">SELL</h1>
         <h1 className="text-2xl">{props.companyName}</h1>
       </div>
@@ -38,7 +38,7 @@ export default function SellPopup(props: any) {
               value={quantity}
               onChange={updateQuantity}
             />
-            <h1>Total value: {quantity * props.ltp}</h1>
+            <h1>Total value: {(quantity * props.ltp).toFixed(2)}</h1>
             <div className="flex justify-center items-center">
               <button className="mt-2 flex w-fit px-4 text-xl font-semibold p-2 bg-[#037A68] text-white  rounded-md">
                 Buy

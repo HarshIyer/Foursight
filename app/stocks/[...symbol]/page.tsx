@@ -9,6 +9,7 @@ import TopMoversColumn from "./components/TopMoversColumn";
 import Link from "next/link";
 import LTP from "./components/sections/LTP";
 import Stats from "./components/sections/Statistics/Stats";
+import BuySellWatch from "./components/sections/BuySellWatch";
 export const runtime = "edge";
 export default function Page({
   params,
@@ -132,6 +133,13 @@ export default function Page({
               <div className="md:w-full">
                 <HighChart symbol={params.symbol} />
               </div>
+            </div>
+            <div className="my-6 w-full flex justify-center md:hidden">
+              <BuySellWatch
+                symbol={symbol}
+                companyName={companyName}
+                ltp={stockData.ltp}
+              />
             </div>
             <div className="mt-6">
               <Stats

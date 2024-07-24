@@ -39,7 +39,7 @@ export default function BuyPopup(props: any) {
               value={quantity}
               onChange={updateQuantity}
             />
-            <h1>Total value: {quantity * props.ltp}</h1>
+            <h1>Total value: {(quantity * props.ltp).toFixed(2)}</h1>
             <div className="flex justify-center items-center">
               <button className="mt-2 flex w-fit px-4 text-xl font-semibold p-2 bg-[#037A68] text-white  rounded-md">
                 Buy
