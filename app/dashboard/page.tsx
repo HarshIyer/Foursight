@@ -12,6 +12,7 @@ import IndicesSection from "./sections/IndicesSection";
 import NewsSection from "./sections/NewsSection";
 import TopMoversSection from "./sections/TopMoversSection";
 import getTopMovers from "./handlers/topMovers";
+import TopMarketCap from "./components/TopMarketCap";
 
 export default function DashboardPage() {
   let token = getCookie("token");
@@ -68,6 +69,7 @@ export default function DashboardPage() {
             <div className="flex flex-col ">
               <IndicesSection data={indicesData} />
               <TopMoversSection data={topMovers} />
+              <TopMarketCap data={marketCapData} />
             </div>
           </div>
           <div className="ml-8">{/* <NewsSection data={news} /> */}</div>

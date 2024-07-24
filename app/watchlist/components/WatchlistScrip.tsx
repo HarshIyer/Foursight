@@ -87,7 +87,7 @@ export default function WatchlistScrip(props: any) {
         theme="light"
         transition={Slide}
       />
-      <div className="flex flex-col border border-2 border-[#E0E0E0] p-4 px-6  rounded-lg">
+      <div className="flex flex-col border-2 border-[#E0E0E0] p-4 px-6  rounded-lg">
         <Link href={`/stocks/${encodeURIComponent(symbol)}`}>
           <div>
             <h1
