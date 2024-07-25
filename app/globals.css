@@ -47,3 +47,23 @@ body {
     border-radius: 12px;
     width: 400px;
 }
+
+.search-bar {
+    display: none;
+}
+
+.animate-in {
+    animation: fadeIn 0.5s ease-in-out;
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

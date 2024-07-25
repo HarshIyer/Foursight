@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import { deleteCookie } from "cookies-next";
+import { deleteCookie, getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 export default function Logout() {
   const router = useRouter();
@@ -10,9 +10,11 @@ export default function Logout() {
   }
 
   useEffect(() => {
-    deleteCookie("token");
-    sleep(500);
-    router.push("/");
+    if (getCookie("token")) {
+      deleteCookie("token");
+      sleep(500);
+      router.push("/");
+    }
   });
 
   return (

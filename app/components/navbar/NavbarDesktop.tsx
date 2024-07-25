@@ -26,7 +26,7 @@ export default function NavbarDesktop(props: any) {
   const handleTransition = async (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     link: string,
-    href: string
+    href: string,
   ) => {
     e.preventDefault();
     const body = document.querySelector("body");
@@ -40,11 +40,9 @@ export default function NavbarDesktop(props: any) {
     body?.classList.remove("page-transition");
   };
 
-  let query = "";
+  const [query, setQuery] = useState("");
   async function handleSearch(e: any) {
     e.preventDefault();
-    query =
-      (document.getElementById("search") as HTMLInputElement)?.value || "";
     const body = document.querySelector("body");
     handleTransition(e, query, `/stocks?search=${query}`);
   }
@@ -66,8 +64,9 @@ export default function NavbarDesktop(props: any) {
               onSubmit={handleSearch}
             >
               <input
-                id="search"
-                className="border-none bg-transparent focus:border-none focus:outline-none border-none px-2 text-base rounded-lg"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                className=" bg-transparent focus:border-none focus:outline-none border-none px-2 text-base rounded-lg"
                 type="text"
                 placeholder="Search for stocks"
               />
