@@ -2,7 +2,7 @@
 
 ### Your very own Paper Trading & Stock Analysis for the Indian Stock Market
 
-> https://foursight.harshiyer.me
+> Website deployed globally at https://foursight.harshiyer.me
 
 Foursight is a powerful web application designed to empower Indian stock market enthusiasts with a comprehensive paper trading and analysis platform. Practice your trading strategies in a risk-free environment with access to live data for over 2000+ stocks listed on the National Stock Exchange.
 
@@ -13,7 +13,6 @@ Foursight is a powerful web application designed to empower Indian stock market 
 - **Paper Trading:** Simulate real-world trading without risking capital. Track your performance and refine your strategies before investing your hard-earned money.
   ![Scrip Page](public/StockPage.jpg)
 - **Charting:** Get access to historical data for Scrips in interactive and user friendly charts.
-  [Image of various chart types and indicators]
 - **Portfolio Management:** Build and customize your own virtual portfolios, track your paper trades, and monitor your overall performance.
   ![Portfolio](image.png)
 - **Watchlists:** Stay on top of your favorite stocks by creating watchlists.
