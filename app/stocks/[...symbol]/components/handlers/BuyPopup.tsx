@@ -1,6 +1,37 @@
+import { apiURL } from "@/app/components/apiURL";
+import axios from "axios";
+import { getCookie } from "cookies-next";
 import { useState } from "react";
+import { Slide, toast } from "react-toastify";
 
 export default function BuyPopup(props: any) {
+  let symbol = props.symbol || "";
+  let token = getCookie("token");
+  const notifySuccess = (message: string) =>
+    toast.success(message, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Slide,
+    });
+  const notifyError = (message: string) =>
+    toast.error(message, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Slide,
+    });
+
   const [quantity, setQuantity] = useState(0);
 
   function updateQuantity(e: any) {
@@ -15,8 +46,33 @@ export default function BuyPopup(props: any) {
     }
   }
 
-  function handleBuy(e: any) {
+  async function handleBuy(e: any) {
     e.preventDefault();
+    const data = {
+      symbol: decodeURIComponent(props.symbol),
+      quantity: quantity,
+    };
+    let results;
+    try {
+      results = await axios({
+        method: "post",
+        url: apiURL + "/transaction/buyScrip",
+        headers: { Authorization: "Bearer " + token },
+        data: {
+          scrip: decodeURIComponent(symbol),
+          quantity: quantity,
+        },
+      });
+    } catch (err: any) {
+      results = err.response;
+    }
+    if (results.status === 200) {
+      notifySuccess(`Successfully bought ${quantity} ${props.symbol}`);
+    } else if (results.status === 401) {
+      notifyError("Insufficient Funds!");
+    } else {
+      notifyError("Failed to buy the stock");
+    }
   }
 
   return (
@@ -39,7 +95,9 @@ export default function BuyPopup(props: any) {
               value={quantity}
               onChange={updateQuantity}
             />
-            <h1>Total value: {(quantity * props.ltp).toFixed(2)}</h1>
+            <h1 className="green-text font-semibold">
+              Total value: ₹{(quantity * props.ltp).toFixed(2)}
+            </h1>
             <div className="flex justify-center items-center">
               <button className="mt-2 flex w-fit px-4 text-xl font-semibold p-2 bg-[#037A68] text-white  rounded-md">
                 Buy

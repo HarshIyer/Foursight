@@ -1,8 +1,37 @@
+import { apiURL } from "@/app/components/apiURL";
+import axios from "axios";
+import { getCookie } from "cookies-next";
 import { useState } from "react";
+import { toast, Slide } from "react-toastify";
 
 export default function SellPopup(props: any) {
   const [quantity, setQuantity] = useState(0);
-
+  let symbol = props.symbol || "";
+  let token = getCookie("token");
+  const notifySuccess = (message: string) =>
+    toast.success(message, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Slide,
+    });
+  const notifyError = (message: string) =>
+    toast.error(message, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Slide,
+    });
   function updateQuantity(e: any) {
     setQuantity(e.target.value);
 
@@ -15,8 +44,33 @@ export default function SellPopup(props: any) {
     }
   }
 
-  function handleBuy(e: any) {
+  async function handleSell(e: any) {
     e.preventDefault();
+    const data = {
+      symbol: decodeURIComponent(props.symbol),
+      quantity: quantity,
+    };
+    let results;
+    try {
+      results = await axios({
+        method: "post",
+        url: apiURL + "/transaction/sellScrip",
+        headers: { Authorization: "Bearer " + token },
+        data: {
+          scrip: decodeURIComponent(symbol),
+          quantity: quantity,
+        },
+      });
+    } catch (err: any) {
+      results = err.response;
+    }
+    if (results.status === 200) {
+      notifySuccess(`Successfully sold ${quantity} ${props.symbol}`);
+    } else if (results.status === 401) {
+      notifyError("Insufficient stocks!");
+    } else {
+      notifyError("Failed to sell the stock");
+    }
   }
 
   return (
@@ -29,7 +83,7 @@ export default function SellPopup(props: any) {
         LTP: <span className="ml-1 font-semibold red-text">₹ {props.ltp}</span>
       </div>
       <div>
-        <form onSubmit={handleBuy}>
+        <form onSubmit={handleSell}>
           <div className="text-lg flex flex-col mt-4">
             <label className="text-xl ">Quantity</label>
             <input
@@ -38,10 +92,12 @@ export default function SellPopup(props: any) {
               value={quantity}
               onChange={updateQuantity}
             />
-            <h1>Total value: {(quantity * props.ltp).toFixed(2)}</h1>
+            <h1 className="red-text font-semibold">
+              Total value: ₹{(quantity * props.ltp).toFixed(2)}
+            </h1>
             <div className="flex justify-center items-center">
               <button className="mt-2 flex w-fit px-4 text-xl font-semibold p-2 bg-[#037A68] text-white  rounded-md">
-                Buy
+                Sell
               </button>
             </div>
           </div>

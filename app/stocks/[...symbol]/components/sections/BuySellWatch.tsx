@@ -79,7 +79,11 @@ export default function BuySellWatch(props: any) {
           }
           modal
         >
-          <BuyPopup companyName={props.companyName} ltp={props.ltp} />
+          <BuyPopup
+            companyName={props.companyName}
+            symbol={decodeURIComponent(props.symbol)}
+            ltp={props.ltp}
+          />
         </Popup>
       </div>
 
@@ -104,7 +108,11 @@ export default function BuySellWatch(props: any) {
           }
           modal
         >
-          <SellPopup companyName={props.companyName} ltp={props.ltp} />
+          <SellPopup
+            companyName={props.companyName}
+            symbol={decodeURIComponent(props.symbol)}
+            ltp={props.ltp}
+          />
         </Popup>
       </div>
       <button
