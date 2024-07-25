@@ -1,7 +1,7 @@
 "use client";
 import TopMovers from "../components/sections/TopMovers/TopMovers";
 import Navbar from "../components/navbar/Navbar";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import parseJwt from "../components/navbar/utils/parseJwt";
 import { getCookie } from "cookies-next";
 import { NavTransition } from "../components/navbar/NavTransition";

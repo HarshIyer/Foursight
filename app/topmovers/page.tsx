@@ -77,7 +77,7 @@ export default function TopMovers() {
             <button
               className={`p-1  mx-2   ${
                 display == "Volume"
-                  ? "underline text-black decoration-4 underline-offset-8  text-black "
+                  ? "underline  decoration-4 underline-offset-8  text-black "
                   : ""
               }`}
               onClick={() => setDisplay("Volume")}

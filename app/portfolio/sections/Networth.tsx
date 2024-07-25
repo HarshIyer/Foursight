@@ -6,6 +6,8 @@ import { getCookie } from "cookies-next";
 import { useEffect, useState } from "react";
 import { PieChart } from "react-minimal-pie-chart";
 import HoldingTable from "../components/HoldingTable";
+import OrderTable from "../components/OrderTable";
+import { NavTransition } from "@/app/components/navbar/NavTransition";
 
 export default function Networth(props: any) {
   const { data } = props;
@@ -139,6 +141,20 @@ export default function Networth(props: any) {
               data={chartArray}
             />
           </div>
+        </div>
+        <div className="rounded-md border-2  p-5">
+          <h1 className="green-text font-semibold mb-4 text-2xl">
+            {" "}
+            Order Book{" "}
+          </h1>{" "}
+          <OrderTable data={data.orderBook ? data.orderBook : []} />
+          <h1
+            className={`text-right my-2 green-text underline font-semibold ${data.orderBook?.length === 0 ? "hidden" : "block"} `}
+          >
+            <NavTransition className="" href="/portfolio/orders">
+              View all
+            </NavTransition>{" "}
+          </h1>
         </div>
       </div>
     </div>

@@ -144,7 +144,7 @@ export default function LoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <div className="flex justify-center flex flex-col items-center w-full">
+              <div className=" justify-center flex flex-col items-center w-full">
                 <button className="bg-[#037A68] hover:bg-teal-800 transition transition-all-0.5s text-white font-semibold p-2 mt-4 rounded-md">
                   Login
                 </button>

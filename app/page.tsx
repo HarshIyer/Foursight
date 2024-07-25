@@ -9,9 +9,9 @@ export default function Home() {
       <Navbar logStatus={false} />
       <div className="mx-6 flex flex-col md:flex-row">
         <div className="mt-12 grid grid-cols-1 xl:grid-cols-2">
-          <div>
+          <div className="">
             <h1 className="text-6xl font-medium green-text">Foursight</h1>
-            <h2 className="font-semibold text-4xl mt-12">
+            <h2 className="font-semibold text-4xl mt-12 w-full flex flex-col line-clamp-2">
               Practice with virtual money,{" "}
               <span className="green-text">in the real market.</span>
             </h2>
