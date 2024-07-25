@@ -4,7 +4,8 @@ import { apiURL } from "./app/components/apiURL";
 export async function middleware(request: NextRequest) {
   if (
     request.nextUrl.pathname === "/dashboard" ||
-    request.nextUrl.pathname === "/login"
+    request.nextUrl.pathname === "/login" ||
+    request.nextUrl.pathname === "/portfolio"
   ) {
     let currentUser = false;
     let results;
@@ -45,5 +46,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard", "/login", "/"],
+  matcher: ["/dashboard", "/login", "/", "/portfolio"],
 };
