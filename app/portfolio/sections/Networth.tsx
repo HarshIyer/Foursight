@@ -111,13 +111,20 @@ export default function Networth(props: any) {
               ) : (
                 <span className="red-text ">
                   {" "}
-                  {parseInt(profitDetails?.overallProfit).toFixed(2)} (
-                  {(
+                  {parseInt(profitDetails?.overallProfit).toFixed(2)}(
+                  {isNaN(
                     100 -
-                    ((data?.spentCash + profitDetails?.overallProfit) /
-                      data?.spentCash) *
-                      100
-                  ).toFixed(2)}
+                      ((parseInt(data?.spentCash) +
+                        parseInt(profitDetails?.overallProfit)) /
+                        parseInt(data?.spentCash)) *
+                        100,
+                  )
+                    ? 0
+                    : 100 -
+                      ((parseInt(data?.spentCash) +
+                        parseInt(profitDetails?.overallProfit)) /
+                        parseInt(data?.spentCash)) *
+                        100}
                   %)
                 </span>
               )}
