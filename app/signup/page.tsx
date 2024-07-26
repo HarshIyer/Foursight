@@ -8,6 +8,7 @@ var crypto = require("crypto");
 import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { NavTransition } from "../components/navbar/NavTransition";
+import Loading from "../components/Loading";
 
 const notifySuccess = (message: string) =>
   toast.success(message, {
@@ -39,6 +40,8 @@ export default function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [loading, setLoading] = useState(false);
+
   async function handleFormSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (username === "" || email === "" || password === "") {
@@ -57,11 +60,14 @@ export default function SignUpPage() {
       .digest("hex");
     let results;
     try {
+      setLoading(true);
+
       results = await axios.post(`${apiURL}/register`, {
         username: username,
         email: email,
         password: hashedPassword,
       });
+      setLoading(false);
     } catch (err: any) {
       results = err.response;
     }
@@ -139,9 +145,15 @@ export default function SignUpPage() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <div className="flex justify-center flex flex-col items-center w-full">
+              <div className=" justify-center flex flex-col items-center w-full">
                 <button className="bg-[#037A68] hover:bg-teal-800 transition transition-all-0.5s text-white font-semibold p-2 mt-4 rounded-md">
-                  Register
+                  {loading ? (
+                    <div className=" w-full h-full flex justify-center items-center">
+                      <Loading /> <span className="ml-2"> Register </span>
+                    </div>
+                  ) : (
+                    "Register"
+                  )}{" "}
                 </button>
                 <p className="text-sm mt-2">
                   Already have an account?{" "}

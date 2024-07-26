@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 var crypto = require("crypto");
 import { setCookie } from "cookies-next";
 import { NavTransition } from "../components/navbar/NavTransition";
+import Loading from "../components/Loading";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -49,6 +50,7 @@ export default function LoginPage() {
       theme: "light",
       transition: Slide,
     });
+  const [loading, setLoading] = useState(false);
 
   async function loginHandler(e: React.FormEvent) {
     e.preventDefault();
@@ -70,6 +72,7 @@ export default function LoginPage() {
         username: username,
         password: hashedPassword,
       });
+      setLoading(true);
     } catch (err: any) {
       results = err.response;
     }
@@ -146,7 +149,13 @@ export default function LoginPage() {
               </div>
               <div className=" justify-center flex flex-col items-center w-full">
                 <button className="bg-[#037A68] hover:bg-teal-800 transition transition-all-0.5s text-white font-semibold p-2 mt-4 rounded-md">
-                  Login
+                  {loading ? (
+                    <div className=" w-full h-full flex justify-center items-center">
+                      <Loading /> <span className="ml-2"> Login </span>
+                    </div>
+                  ) : (
+                    "Login"
+                  )}
                 </button>
                 <p className="text-sm mt-2">
                   Don&apos;t have an account?{" "}

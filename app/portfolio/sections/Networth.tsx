@@ -103,7 +103,7 @@ export default function Networth(props: any) {
             </h1>
 
             <div className="ml-2 font-extrabold text-base">
-              {profitDetails?.overallProfit > 0 ? (
+              {profitDetails?.overallProfit >= 0 ? (
                 <span className="green-text ">
                   {" "}
                   +{profitDetails?.overallProfit.toFixed(2)}{" "}

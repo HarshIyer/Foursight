@@ -1,4 +1,5 @@
 import { apiURL } from "@/app/components/apiURL";
+import Loading from "@/app/components/Loading";
 import axios from "axios";
 import { getCookie } from "cookies-next";
 import { useState } from "react";
@@ -43,6 +44,7 @@ export default function SellPopup(props: any) {
       return;
     }
   }
+  const [loading, setLoading] = useState(false);
 
   async function handleSell(e: any) {
     e.preventDefault();
@@ -61,6 +63,7 @@ export default function SellPopup(props: any) {
           quantity: quantity,
         },
       });
+      setLoading(false);
     } catch (err: any) {
       results = err.response;
     }
@@ -97,7 +100,13 @@ export default function SellPopup(props: any) {
             </h1>
             <div className="flex justify-center items-center">
               <button className="mt-2 flex w-fit px-4 text-xl font-semibold p-2 bg-[#037A68] text-white  rounded-md">
-                Sell
+                {loading ? (
+                  <div className=" w-full h-full flex justify-center items-center">
+                    <Loading /> <span className="ml-2"> Sell </span>
+                  </div>
+                ) : (
+                  "Sell"
+                )}
               </button>
             </div>
           </div>

@@ -5,6 +5,7 @@ import { apiURL } from "@/app/components/apiURL";
 import axios from "axios";
 import { toast, Slide } from "react-toastify";
 import { getCookie } from "cookies-next";
+import { useState } from "react";
 
 export default function BuySellWatch(props: any) {
   let symbol = props.symbol || "";

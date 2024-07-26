@@ -10,6 +10,7 @@ import Link from "next/link";
 import LTP from "./components/sections/LTP";
 import Stats from "./components/sections/Statistics/Stats";
 import BuySellWatch from "./components/sections/BuySellWatch";
+import Loading from "@/app/components/Loading";
 export const runtime = "edge";
 export default function Page({
   params,
@@ -55,6 +56,8 @@ export default function Page({
       items: [],
     },
   });
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     async function getStockData() {
       let data;
@@ -62,6 +65,7 @@ export default function Page({
         data = await axios.post(`${apiURL}/getStockQuote`, {
           symbol: btoa(decodeURIComponent(symbol)),
         });
+        setLoading(false);
       } catch (err) {
         console.error(err);
       }
@@ -121,13 +125,19 @@ export default function Page({
         <div className="flex w-full md:flex-row justify-between">
           <div className="xl:w-[60%]">
             <div>
-              <LTP
-                symbol={symbol}
-                ltp={stockData.ltp}
-                dayChange={stockData.dayChange}
-                dayChangePerc={stockData.dayChangePerc}
-                companyName={companyName}
-              />
+              {loading ? (
+                <div className="w-full h-full flex justify-center items-center">
+                  <Loading />
+                </div>
+              ) : (
+                <LTP
+                  symbol={symbol}
+                  ltp={stockData.ltp}
+                  dayChange={stockData.dayChange}
+                  dayChangePerc={stockData.dayChangePerc}
+                  companyName={companyName}
+                />
+              )}
             </div>
             <div className="mt-6">
               <div className="md:w-full">
@@ -142,33 +152,45 @@ export default function Page({
               />
             </div>
             <div className="mt-6">
-              <Stats
-                symbol={symbol}
-                open={stockData.open}
-                close={stockData.close}
-                ltp={stockData.ltp}
-                high={stockData.high}
-                low={stockData.low}
-                volume={stockData.volume}
-                tsInMillis={stockData.tsInMillis}
-                lowPriceRange={stockData.lowPriceRange}
-                highPriceRange={stockData.highPriceRange}
-                totalBuyQty={stockData.totalBuyQty}
-                totalSellQty={stockData.totalSellQty}
-                lastTradeQty={stockData.lastTradeQty}
-                lastTradeTime={stockData.lastTradeTime}
-                dayChange={stockData.dayChange}
-                dayChangePerc={stockData.dayChangePerc}
-                oiDayChange={stockData.oiDayChange}
-                oiDayChangePerc={stockData.oiDayChangePerc}
-                lowTradeRange={stockData.lowTradeRange}
-                highTradeRange={stockData.highTradeRange}
-              />
+              {loading ? (
+                <div className="w-full h-full flex justify-center items-center">
+                  <Loading />
+                </div>
+              ) : (
+                <Stats
+                  symbol={symbol}
+                  open={stockData.open}
+                  close={stockData.close}
+                  ltp={stockData.ltp}
+                  high={stockData.high}
+                  low={stockData.low}
+                  volume={stockData.volume}
+                  tsInMillis={stockData.tsInMillis}
+                  lowPriceRange={stockData.lowPriceRange}
+                  highPriceRange={stockData.highPriceRange}
+                  totalBuyQty={stockData.totalBuyQty}
+                  totalSellQty={stockData.totalSellQty}
+                  lastTradeQty={stockData.lastTradeQty}
+                  lastTradeTime={stockData.lastTradeTime}
+                  dayChange={stockData.dayChange}
+                  dayChangePerc={stockData.dayChangePerc}
+                  oiDayChange={stockData.oiDayChange}
+                  oiDayChangePerc={stockData.oiDayChangePerc}
+                  lowTradeRange={stockData.lowTradeRange}
+                  highTradeRange={stockData.highTradeRange}
+                />
+              )}
             </div>
           </div>
           <div className="hidden  grow xl:flex flex-row justify-end">
             <div className="flex mb-auto ml-auto">
-              <TopMoversColumn data={topMovers} />
+              {loading ? (
+                <div className="w-full h-full flex justify-center items-center">
+                  <Loading />
+                </div>
+              ) : (
+                <TopMoversColumn data={topMovers} />
+              )}
             </div>
           </div>
         </div>

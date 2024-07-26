@@ -7,9 +7,13 @@ import axios from "axios";
 import { getCookie } from "cookies-next";
 import Link from "next/link";
 import { NavTransition } from "../components/navbar/NavTransition";
+import Loading from "../components/Loading";
 export default function WatchlistPage() {
   const [watchlistData, setWatchlistData] = useState([]);
   const token = getCookie("token");
+
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     async function getWatchListData() {
       let data;
@@ -19,6 +23,7 @@ export default function WatchlistPage() {
           url: apiURL + "/getWatchList",
           headers: { Authorization: "Bearer " + token },
         });
+        setLoading(false);
       } catch (err) {
         console.error(err);
       }
@@ -45,12 +50,19 @@ export default function WatchlistPage() {
         <div className="my-4">
           <h1 className="text-xl font-semibold">Watchlist</h1>
         </div>
-        <div className="grid gap-x-4 gap-y-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
-          {Object.keys(watchlistData).map((key: any) => {
-            const scrip = watchlistData[key];
-            return <WatchlistScrip key={key} scrip={scrip} />;
-          })}
-        </div>
+
+        {loading ? (
+          <div className=" w-full h-full flex justify-center items-center">
+            <Loading />
+          </div>
+        ) : (
+          <div className="grid gap-x-4 gap-y-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
+            {Object.keys(watchlistData).map((key: any) => {
+              const scrip = watchlistData[key];
+              return <WatchlistScrip key={key} scrip={scrip} />;
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import TopVolume from "./components/sections/TopVolume";
 import axios from "axios";
 import { apiURL } from "../components/apiURL";
 import { NavTransition } from "../components/navbar/NavTransition";
+import Loading from "../components/Loading";
 
 export default function TopMovers() {
   const [topMovers, setTopMovers] = useState({
@@ -21,6 +22,8 @@ export default function TopMovers() {
     },
   });
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     async function getTopMoverData() {
       let data;
@@ -28,6 +31,7 @@ export default function TopMovers() {
         data = await axios.post(`${apiURL}/topmovers`, {
           size: 10,
         });
+        setLoading(false);
       } catch (err) {
         console.error(err);
       }
@@ -87,15 +91,21 @@ export default function TopMovers() {
           </div>
         </div>
       </div>
-      <div className="mx-6 md:mx-0 mt-8">
-        {display === "Gainers" ? (
-          <TopGainers type="Gainers" apiData={topMovers.TOP_GAINERS.items} />
-        ) : display === "Losers" ? (
-          <TopLosers type="Losers" apiData={topMovers.TOP_LOSERS.items} />
-        ) : (
-          <TopVolume type="Volume" apiData={topMovers.TOP_VOLUME.items} />
-        )}
-      </div>
+      {loading ? (
+        <div className=" w-full h-full flex justify-center items-center">
+          <Loading />
+        </div>
+      ) : (
+        <div className="mx-6 md:mx-0 mt-8">
+          {display === "Gainers" ? (
+            <TopGainers type="Gainers" apiData={topMovers.TOP_GAINERS.items} />
+          ) : display === "Losers" ? (
+            <TopLosers type="Losers" apiData={topMovers.TOP_LOSERS.items} />
+          ) : (
+            <TopVolume type="Volume" apiData={topMovers.TOP_VOLUME.items} />
+          )}
+        </div>
+      )}
     </div>
   );
 }
