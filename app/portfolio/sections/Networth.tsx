@@ -10,7 +10,7 @@ import OrderTable from "../components/OrderTable";
 import { NavTransition } from "@/app/components/navbar/NavTransition";
 
 export default function Networth(props: any) {
-  const { data } = props;
+  const { data, profitDetails } = props;
   const [scripArray, setScripArray] = useState([
     {
       scripName: "",
@@ -96,10 +96,33 @@ export default function Networth(props: any) {
             {" "}
             Your Portfolio Value
           </h1>
-          <h1 className="green-text font-extrabold text-3xl">
-            {" "}
-            ₹ {data.spentCash}
-          </h1>
+          <div className="flex flex-row items-end">
+            <h1 className="green-text font-extrabold text-3xl">
+              {" "}
+              ₹ {data.spentCash + profitDetails?.overallProfit}
+            </h1>
+
+            <div className="ml-2 font-extrabold text-base">
+              {profitDetails?.overallProfit > 0 ? (
+                <span className="green-text ">
+                  {" "}
+                  +{profitDetails?.overallProfit.toFixed(2)}{" "}
+                </span>
+              ) : (
+                <span className="red-text ">
+                  {" "}
+                  {parseInt(profitDetails?.overallProfit).toFixed(2)} (
+                  {(
+                    100 -
+                    ((data?.spentCash + profitDetails?.overallProfit) /
+                      data?.spentCash) *
+                      100
+                  ).toFixed(2)}
+                  %)
+                </span>
+              )}
+            </div>
+          </div>
         </div>
         <div className="rounded-md border-2 px-4 py-2">
           <h1 className="text-[#696969] font-semibold mb-4 text-2xl">
@@ -121,7 +144,12 @@ export default function Networth(props: any) {
         </div>
         <div className="py-4 rounded-lg px-4 border-2">
           <h1 className="green-text font-semibold mb-4 text-2xl"> Holdings </h1>{" "}
-          <HoldingTable data={data.scrips ? data.scrips : []} />
+          <HoldingTable
+            profitData={
+              profitDetails.profitArray ? profitDetails.profitArray : []
+            }
+            data={data.scrips ? data.scrips : []}
+          />
         </div>
         <div className="p-5 border-2 rounded-lg">
           <h1 className="green-text font-semibold mb-4 text-2xl">

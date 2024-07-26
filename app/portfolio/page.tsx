@@ -11,6 +11,7 @@ import Networth from "./sections/Networth";
 export default function PortfolioPage() {
   let token = getCookie("token");
   const [details, setDetails] = useState({});
+  const [profitDetails, setProfitDetails] = useState({});
   useEffect(() => {
     let tokenContents;
     if (token) {
@@ -30,6 +31,21 @@ export default function PortfolioPage() {
         console.error(err);
       }
     }
+
+    async function getProfit() {
+      let results;
+      try {
+        results = await axios({
+          method: "post",
+          url: apiURL + "/transaction/getAccountProfit",
+          headers: { Authorization: "Bearer " + token },
+        });
+        setProfitDetails(results.data);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    getProfit();
     getNetworth();
   }, [token]);
   return (
@@ -51,7 +67,7 @@ export default function PortfolioPage() {
             </p>
           </div>
           <div>
-            <Networth data={details} />
+            <Networth data={details} profitDetails={profitDetails} />
           </div>
         </div>
       </div>
