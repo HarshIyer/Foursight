@@ -99,7 +99,7 @@ export default function Networth(props: any) {
           <div className="flex flex-row items-end">
             <h1 className="green-text font-extrabold text-3xl">
               {" "}
-              ₹ {data.spentCash + profitDetails?.overallProfit}
+              ₹ {(data.spentCash + profitDetails?.overallProfit).toFixed(2)}
             </h1>
 
             <div className="ml-2 font-extrabold text-base">
