@@ -112,7 +112,7 @@ export default function Networth(props: any) {
                 <span className="red-text ">
                   {" "}
                   {parseInt(profitDetails?.overallProfit).toFixed(2)}(
-                  {isNaN(
+                  {(isNaN(
                     100 -
                       ((parseInt(data?.spentCash) +
                         parseInt(profitDetails?.overallProfit)) /
@@ -124,8 +124,9 @@ export default function Networth(props: any) {
                       ((parseInt(data?.spentCash) +
                         parseInt(profitDetails?.overallProfit)) /
                         parseInt(data?.spentCash)) *
-                        100}
-                  %)
+                        100
+                  ).toFixed(2)}
+                  )%
                 </span>
               )}
             </div>
