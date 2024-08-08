@@ -13,9 +13,12 @@ Foursight is a powerful web application designed to empower Indian stock market 
 - **Paper Trading:** Simulate real-world trading without risking capital. Track your performance and refine your strategies before investing your hard-earned money.
   ![Scrip Page](public/StockPage.jpg)
 - **Charting:** Get access to historical data for Scrips in interactive and user friendly charts.
+- **Top Movers:** Get access to the Top Market Movers data for your analysis.
+  ![Watchlist](public/TopGainers.jpg)
 - **Portfolio Management:** Build and customize your own virtual portfolios, track your paper trades, and monitor your overall performance.
-  ![Portfolio](image.png)
+  ![Portfolio](public/Portfolio.jpg)
 - **Watchlists:** Stay on top of your favorite stocks by creating watchlists.
+  ![Watchlist](public/Watchlist.jpg)
 
 ### Benefits:
 
