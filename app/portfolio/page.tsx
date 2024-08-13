@@ -7,6 +7,7 @@ import Navbar from "../components/navbar/Navbar";
 import { NavTransition } from "../components/navbar/NavTransition";
 import parseJwt from "../components/navbar/utils/parseJwt";
 import Networth from "./sections/Networth";
+import RouterComponent from "../components/RouterComponent";
 
 export default function PortfolioPage() {
   let token = getCookie("token");
@@ -52,20 +53,11 @@ export default function PortfolioPage() {
     <div>
       <div className="md:mx-[15%]">
         <Navbar />
-        <div className="flex flex-col justify-start mt-4 mx-6 md:mx-0">
-          <div className="flex flex-row mb-4">
-            <p className="text-xs text-[#1E1E1E] font-light mr-2 ">
-              <NavTransition className="hover:underline" href={"/"}>
-                {" "}
-                Home
-              </NavTransition>{" "}
-              &gt;{" "}
-            </p>
-            <p className="text-xs text-[#1E1E1E] font-light mr-2">
-              {" "}
-              Portfolio{" "}
-            </p>
+        <div className="flex flex-col justify-start mx-6 md:mx-0">
+          <div className="my-4 ">
+            <RouterComponent />
           </div>
+
           <div>
             <Networth data={details} profitDetails={profitDetails} />
           </div>

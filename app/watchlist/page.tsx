@@ -8,6 +8,7 @@ import { getCookie } from "cookies-next";
 import Link from "next/link";
 import { NavTransition } from "../components/navbar/NavTransition";
 import Loading from "../components/Loading";
+import RouterComponent from "../components/RouterComponent";
 export default function WatchlistPage() {
   const [watchlistData, setWatchlistData] = useState([]);
   const token = getCookie("token");
@@ -36,15 +37,8 @@ export default function WatchlistPage() {
     <div className="md:mx-[15%] ">
       <Navbar />
       <div className="mt-2 mb-8 mx-6 md:mx-0">
-        <div className="flex flex-row">
-          <p className="text-xs text-[#1E1E1E] font-light mr-2 ">
-            <NavTransition className="hover:underline" href={"/"}>
-              {" "}
-              Home
-            </NavTransition>{" "}
-            &gt;{" "}
-          </p>
-          <p className="text-xs text-[#1E1E1E] font-light mr-2"> Watchlist</p>
+        <div className="my-4">
+          <RouterComponent />
         </div>
 
         <div className="my-4">

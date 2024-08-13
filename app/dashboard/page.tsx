@@ -13,6 +13,7 @@ import NewsSection from "./sections/NewsSection";
 import TopMoversSection from "./sections/TopMoversSection";
 import getTopMovers from "./handlers/topMovers";
 import TopMarketCap from "./components/TopMarketCap";
+import RouterComponent from "../components/RouterComponent";
 
 export default function DashboardPage() {
   let token = getCookie("token");
@@ -50,15 +51,8 @@ export default function DashboardPage() {
     <div className="flex flex-col md:mx-[15%] ">
       <Navbar logStatus={true} />
       <div className="mt-4 mb-8 mx-6 md:mx-0">
-        <div className="flex flex-row">
-          <p className="text-xs text-[#1E1E1E] font-light mr-2 ">
-            <NavTransition className="hover:underline" href={"/"}>
-              {" "}
-              Home{" "}
-            </NavTransition>
-            &gt;{" "}
-          </p>
-          <p className="text-xs text-[#1E1E1E] font-light mr-2"> Dashboard</p>
+        <div>
+          <RouterComponent />
         </div>
         <div className="flex flex-col md:flex-row">
           <div className="flex flex-col md:w-[70%] ">

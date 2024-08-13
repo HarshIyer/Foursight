@@ -1,3 +1,4 @@
+import { NavTransition } from "@/app/components/navbar/NavTransition";
 import Link from "next/link";
 
 export default function TopMoversItem(data: any) {
@@ -6,7 +7,10 @@ export default function TopMoversItem(data: any) {
   const dayChange = data.data.stats.dayChange.toFixed(2);
   const dayChangePerc = data.data.stats.dayChangePerc.toFixed(2);
   return (
-    <Link href={`/stocks/${encodeURIComponent(nseScriptCode)}`}>
+    <NavTransition
+      href={`/stocks/${encodeURIComponent(nseScriptCode)}`}
+      className=""
+    >
       <div className="w-full  p-1 ">
         <div className="flex w-full flex-row justify-between my-1">
           <div className="mr-2 md:mr-12 justify-center items-center text-sm md:text-sm font-bolder ml-2 ">
@@ -32,6 +36,6 @@ export default function TopMoversItem(data: any) {
           </div>
         </div>
       </div>
-    </Link>
+    </NavTransition>
   );
 }

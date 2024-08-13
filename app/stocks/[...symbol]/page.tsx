@@ -11,6 +11,7 @@ import LTP from "./components/sections/LTP";
 import Stats from "./components/sections/Statistics/Stats";
 import BuySellWatch from "./components/sections/BuySellWatch";
 import Loading from "@/app/components/Loading";
+import RouterComponent from "@/app/components/RouterComponent";
 export const runtime = "edge";
 export default function Page({
   params,
@@ -103,24 +104,8 @@ export default function Page({
         <Navbar />
       </div>
       <div className="md:mt-4 mx-6 md:mx-0">
-        <div className="flex flex-row">
-          <p className="text-xs text-[#1E1E1E] font-light mr-2 ">
-            <Link className="hover:underline" href={"/"}>
-              {" "}
-              Home
-            </Link>{" "}
-            &gt;{" "}
-          </p>
-          <p className="text-xs text-[#1E1E1E] font-light mr-2">
-            <Link className="hover:underline" href={"/stocks"}>
-              {" "}
-              Stocks
-            </Link>{" "}
-            &gt;{" "}
-          </p>
-          <p className="line-clamp-1 text-xs text-[#1E1E1E] font-light mr-2">
-            {symbol}
-          </p>
+        <div>
+          <RouterComponent />
         </div>
         <div className="flex w-full md:flex-row justify-between">
           <div className="xl:w-[60%]">
