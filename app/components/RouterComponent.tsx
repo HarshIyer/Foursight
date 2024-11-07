@@ -19,7 +19,7 @@ export default function RouterComponent() {
   };
 
   return (
-    <div className=" mx-6 md:mx-0">
+    <div className=" mr-6 md:mx-0">
       <div className="flex flex-row">
         {pathArray.map((path: any) => {
           return (
